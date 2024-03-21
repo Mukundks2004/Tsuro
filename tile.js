@@ -1,5 +1,5 @@
 let tileSize = 90;
-let tileRatio = 0.95; //this is a duplicate of tileRatio
+let tileRatio = 0.95;
 
 function moduloStrict(a, n) {
   return ((a % n) + n) % n;
@@ -83,20 +83,10 @@ class Tile {
   }
 
   getRandomTileName() {
-    let tileCase = Math.random();
-    if (tileCase > 0.8) {
-      return "02134657";
-    }
-    if (tileCase > 0.6) {
-      return "12345670"
-    }
-    if (tileCase > 0.4) {
-      return "04152637"
-    }
-    if (tileCase > 0.2) {
-      return "05274163";
-    }
-    return "03712645";
+    let options = [
+      '07416257', '05213746', '02134657', '12345670', '04152637', '05274163', '03132645', '07142345'
+    ]
+    return options[Math.floor(Math.random() * options.length)];
   }
 
   setTileArcs(pathInfo) {
@@ -111,7 +101,7 @@ class Tile {
       if (first % 2 == 1) {
         myArc.horizontallyFlipBezier((this.x + 0.5) * tileSize);
       }
-      myArc.rotateBezier(first / 2, (this.x + 0.5) * tileSize, (this.y + 0.5) * tileSize);
+      myArc.rotateBezier(Math.floor(first / 2), (this.x + 0.5) * tileSize, (this.y + 0.5) * tileSize);
 
       this.paths.push(myArc);
       i++;

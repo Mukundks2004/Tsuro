@@ -1,9 +1,10 @@
 let board = []
-  let tilePercent = 0.95;
-  let tileSize = 90;
-  let boardSize = 6;
-  let lastClickedCoordX = -1;
-  let lastClickedCoordY = -1;
+let tilePercent = 0.95;
+let tileSize = 90;
+let boardSize = 6;
+let lastClickedCoordX = -1;
+let lastClickedCoordY = -1;
+let playerOne;
   
 function itIsYourTurn() {
   return true;
@@ -27,6 +28,7 @@ function updateBoard(event) {
 
 const boardSketch = (s) => {
   s.setup = () => {
+    playerOne = new Dragon(0, 0, 0);
     document.addEventListener('tileDispatched', updateBoard);
     for (let i = 0; i < boardSize; i++) {
       board.push([]);
@@ -34,7 +36,7 @@ const boardSketch = (s) => {
         board[i].push(0);
       }
     }
-    let boardCanvas = s.createCanvas(6 * tileSize, boardSize * tileSize);
+    let boardCanvas = s.createCanvas(boardSize * tileSize, boardSize * tileSize);
     boardCanvas.mousePressed(boardClicked);
   };
 
@@ -76,6 +78,8 @@ const boardSketch = (s) => {
         }
       }
     }
+    s.fill(playerOne.color);
+    s.ellipse(playerOne.x, playerOne.y, playerOne.radius);
   };
 }
 
