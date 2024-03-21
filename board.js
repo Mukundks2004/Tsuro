@@ -6,28 +6,35 @@ const boardSketch = (s) => {
   let board = []
   let tilePercent = 0.95;
   let tileSize = 90;
+  let boardSize = 6;
 
   s.setup = () => {
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < boardSize; i++) {
       board.push([]);
-      for (let j = 0; j < 6; j++) {
+      for (let j = 0; j < boardSize; j++) {
         board[i].push(0);
       }
     }
-    s.createCanvas(6 * tileSize, 6 * tileSize);
+    let boardCanvas = s.createCanvas(6 * tileSize, boardSize * tileSize);
+    boardCanvas.mousePressed(boardClicked);
   };
 
+  function boardClicked() {
+    let xCoordOfTile = Math.floor(s.mouseX / tileSize);
+    let yCoordOfTile = Math.floor(s.mouseY / tileSize);
+    // board[yCoordOfTile][xCoordOfTile] = 
+  }
+
   s.draw = () => {
-    let xCoord = Math.floor(s.mouseX / tileSize);
-    let yCoord = Math.floor(s.mouseY / tileSize);
+    let xCoordOfTile = Math.floor(s.mouseX / tileSize);
+    let yCoordOfTile = Math.floor(s.mouseY / tileSize);
     s.background('saddlebrown');
-    s.strokeWeight(3);
-    s.stroke('saddlebrown');
-    for (let i = 0; i < 6; i++) {
-      for (let j = 0; j < 6; j++) {
+    s.noStroke();
+    for (let i = 0; i < boardSize; i++) {
+      for (let j = 0; j < boardSize; j++) {
         let tile = board[i][j];
         if (tile === 0) {
-          if (xCoord === j && yCoord === i && itIsYourTurn()) {
+          if (xCoordOfTile === j && yCoordOfTile === i && itIsYourTurn()) {
             s.fill('sandybrown');
           }
           else {
