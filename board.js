@@ -41,7 +41,9 @@ const boardSketch = (s) => {
   function boardClicked() {
     lastClickedCoordX = Math.floor(s.mouseX / tileSize);
     lastClickedCoordY = Math.floor(s.mouseY / tileSize);
-    sendGetTileQuery();
+    if (board[lastClickedCoordY][lastClickedCoordX] === 0) {
+      sendGetTileQuery();
+    }
   }
 
   s.draw = () => {
