@@ -66,7 +66,6 @@ class Tile {
     this.y = y;
     this.paths = [];
     this.initializePaths();
-    
   }
 
   initializePaths() {

@@ -1,11 +1,22 @@
-const inventorySketch = (s) => {
-  let inventory = [];
-  let tilePercent = 0.95;
-  let tileSize = 90;
-  let inventorySize = 4;
-  let selectedTileNumber = 0;
+let selectedTileNumber = -1;
+let inventory = [];
+let tilePercent = 0.95;
+let tileSize = 90;
+let inventorySize = 4;
 
+function receiveTileDataQuery(_) {
+  if (selectedTileNumber !== -1) {
+    let event = new CustomEvent('tileDispatched', {detail: inventory[selectedTileNumber]});
+    inventory[selectedTileNumber] = new Tile(selectedTileNumber, 0);
+    document.dispatchEvent(event);
+    selectedTileNumber = -1;
+  }
+}
+
+const inventorySketch = (s) => {
   s.setup = () => {
+    document.addEventListener('boardClicked', receiveTileDataQuery);
+    
     for (let i = 0; i < inventorySize; i++) {
       inventory.push(new Tile(i, 0));
     }
