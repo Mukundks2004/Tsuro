@@ -49,5 +49,4 @@ class Dragon {
         break;
     }
   }
-
 }

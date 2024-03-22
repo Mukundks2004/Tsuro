@@ -6,6 +6,7 @@ let boardSize = 6;
 let lastClickedCoordX = -1;
 let lastClickedCoordY = -1;
 let player1Colour;
+let socket;
   
 function itIsYourTurn() {
   return true;
@@ -71,14 +72,10 @@ function moveDragons() {
   }
 }
 
-function getQueryParameter(parameterName) {
-  var urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get(parameterName);
-}
 
 const boardSketch = (s) => {
   s.setup = () => {
-    dragons.push(new Dragon(getQueryParameter('color')));
+    dragons.push(new Dragon('blue'));
     document.addEventListener('tileDispatched', updateBoard);
     for (let i = 0; i < boardSize; i++) {
       board.push([]);
@@ -90,6 +87,7 @@ const boardSketch = (s) => {
     boardCanvas.mousePressed(boardClicked);
   };
 
+
   function boardClicked() {
     lastClickedCoordX = Math.floor(s.mouseX / tileSize);
     lastClickedCoordY = Math.floor(s.mouseY / tileSize);
@@ -97,6 +95,8 @@ const boardSketch = (s) => {
       sendGetTileQuery();
     }
   }
+
+  
 
   s.draw = () => {
     let xCoordOfTile = Math.floor(s.mouseX / tileSize);

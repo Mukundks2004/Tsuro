@@ -4,9 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="libraries/p5.min.js"></script>
-    <!-- <script src="tile.js"></script>
-    <script src="dragon.js"></script>
-    <script src="board.js"></script> -->
     
     <title>HomePage</title>
 
@@ -14,11 +11,19 @@
 
   <body>
     <h1>Tsuro!</h1>
-    <select id="dropdownColor">
-      <option value="aqua">Aqua</option>
-      <option value="blue">Blue</option>
-      <option value="lime">Lime</option>
+
+    <label for="playerCount">How many are playing?</label>
+    <br>
+    <select id="playerCount">
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
     </select>
+
+    <div id="playerTable"></div>
+
+
+
     <button id="startButton">Click me to start!</button>
     <script src="script.js"></script>
   </body>
