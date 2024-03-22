@@ -72,10 +72,19 @@ function moveDragons() {
   }
 }
 
+function printParams() {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+
+  urlParams.forEach((value, key) => {
+      console.log(`${key}: ${value}`);
+  });
+}
 
 const boardSketch = (s) => {
   s.setup = () => {
     dragons.push(new Dragon('blue'));
+    printParams();
     document.addEventListener('tileDispatched', updateBoard);
     for (let i = 0; i < boardSize; i++) {
       board.push([]);

@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const playerCountSelect = document.getElementById('playerCount');
   const playerTableDiv = document.getElementById('playerTable');
   const startButton = document.getElementById('startButton');
+  generatePlayerTable(parseInt(playerCountSelect.value));
 
   playerCountSelect.addEventListener('change', function () {
       const playerCount = parseInt(playerCountSelect.value);
