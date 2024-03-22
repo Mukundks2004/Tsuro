@@ -1,10 +1,10 @@
 let board = []
+let dragons = []
 let tilePercent = 0.95;
 let tileSize = 90;
 let boardSize = 6;
 let lastClickedCoordX = -1;
 let lastClickedCoordY = -1;
-let playerOne;
   
 function itIsYourTurn() {
   return true;
@@ -24,11 +24,57 @@ function updateBoard(event) {
   board[lastClickedCoordY][lastClickedCoordX] = event.detail;
   lastClickedCoordX = -1;
   lastClickedCoordY = -1;
+  moveDragons();
+}
+
+function moveDragons() {
+  for (let dragon of dragons) {
+    while (board[dragon.y][dragon.x] !== 0) {
+      console.log(dragon);
+      
+
+      let currentName = board[dragon.y][dragon.x].name;
+      let otherVertex;
+      for (let i = 0; i < currentName.length; i++) {
+        if (parseInt(currentName[i]) === dragon.vertex) {
+          otherVertex = parseInt(currentName[i + 1]);
+          board[dragon.y][dragon.x].paths[i/2].color = dragon.color;
+        }
+        else if (parseInt(currentName[i + 1]) === dragon.vertex) {
+          otherVertex = parseInt(currentName[i]);
+          board[dragon.y][dragon.x].paths[i/2].color = dragon.color;
+        }
+        i++;
+      }
+      let newVertexOtherTile = moduloStrict(otherVertex + (otherVertex % 2 === 0 ? 5 : 3), 8);
+      switch (Math.floor(newVertexOtherTile / 2)) {
+        case 0:
+          dragon.y += 1; 
+          break;  
+        case 1:
+          dragon.x -= 1;
+          break;
+        case 2:
+          dragon.y -= 1;
+          break;
+        case 3:
+          dragon.x += 1;
+          break;
+      }
+      dragon.vertex = newVertexOtherTile;
+      dragon.calculatePixelCoords();
+
+      if (dragon.isOffBoard(boardSize)) {
+        dragon.isPlaying = false;
+        break;
+      }
+    }
+  }
 }
 
 const boardSketch = (s) => {
   s.setup = () => {
-    playerOne = new Dragon(0, 0, 0);
+    dragons.push(new Dragon('yellow'));
     document.addEventListener('tileDispatched', updateBoard);
     for (let i = 0; i < boardSize; i++) {
       board.push([]);
@@ -43,7 +89,7 @@ const boardSketch = (s) => {
   function boardClicked() {
     lastClickedCoordX = Math.floor(s.mouseX / tileSize);
     lastClickedCoordY = Math.floor(s.mouseY / tileSize);
-    if (board[lastClickedCoordY][lastClickedCoordX] === 0) {
+    if (lastClickedCoordX === dragons[0].x && lastClickedCoordY === dragons[0].y) {
       sendGetTileQuery();
     }
   }
@@ -57,7 +103,7 @@ const boardSketch = (s) => {
         s.noStroke();
         let tile = board[i][j];
         if (tile === 0) {
-          if (xCoordOfTile === j && yCoordOfTile === i && itIsYourTurn()) {
+          if (xCoordOfTile === dragons[0].x && xCoordOfTile === j && yCoordOfTile === dragons[0].y && yCoordOfTile === i && itIsYourTurn()) {
             s.fill('sandybrown');
           }
           else {
@@ -72,14 +118,17 @@ const boardSketch = (s) => {
           s.noFill();
           for (let path of tile.paths) {
             s.strokeWeight(3);
-            s.stroke('wheat');
+            s.stroke(path.color);
             s.bezier(path.points[0].x, path.points[0].y, path.points[1].x, path.points[1].y, path.points[2].x, path.points[2].y, path.points[3].x, path.points[3].y)
           }
         }
       }
     }
-    s.fill(playerOne.color);
-    s.ellipse(playerOne.x, playerOne.y, playerOne.radius);
+    s.noStroke();
+    for (let dragon of dragons) {
+      s.fill(dragon.color);
+      s.ellipse(dragon.coords.x, dragon.coords.y, dragon.radius);
+    }
   };
 }
 

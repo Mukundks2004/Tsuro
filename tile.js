@@ -30,6 +30,7 @@ class Point {
 class Bezier {
   constructor(x1, y1, x2, y2, x3, y3, x4, y4) {
     this.points = [new Point(x1, y1), new Point(x2, y2), new Point(x3, y3), new Point(x4, y4)];
+    this.color = 'wheat'
   }
 
   rotateBezier(times, centreX, centreY) {
@@ -84,26 +85,34 @@ class Tile {
 
   getRandomTileName() {
     let options = [
-      '07416257', '05213746', '02134657', '12345670', '04152637', '05274163', '03132645', '07142345'
+      '61257034', '70123645', '12345670', '01234567', '01452637', '02713456', '50724613'
     ]
     return options[Math.floor(Math.random() * options.length)];
   }
 
   setTileArcs(pathInfo) {
-    this.paths = []
+    this.paths = [];
     for (let i = 0; i < pathInfo.length; i++) {
+
+      // Assumption: second comes after first in the cycle (so difference = 1, 2, 3, 4 but no more)
       let first = parseInt(pathInfo[i]);
       let second = parseInt(pathInfo[i + 1]);
       let difference = moduloStrict(second - first, 8);
-      let myArc = this.getArc(difference);
+      let arc;
 
-      myArc.moveBy(this.x * tileSize, this.y * tileSize);
-      if (first % 2 == 1) {
-        myArc.horizontallyFlipBezier((this.x + 0.5) * tileSize);
+      if (first % 2 === 1) {
+        difference = moduloStrict(-1 * difference, 8);
+        arc = this.getArc(difference);
+        arc.moveBy(this.x * tileSize, this.y * tileSize);
+        arc.horizontallyFlipBezier((this.x + 0.5) * tileSize);
       }
-      myArc.rotateBezier(Math.floor(first / 2), (this.x + 0.5) * tileSize, (this.y + 0.5) * tileSize);
+      else {
+        arc = this.getArc(difference);
+        arc.moveBy(this.x * tileSize, this.y * tileSize);
+      }
 
-      this.paths.push(myArc);
+      arc.rotateBezier(Math.floor(first / 2), (this.x + 0.5) * tileSize, (this.y + 0.5) * tileSize);
+      this.paths.push(arc);
       i++;
     }
   }
