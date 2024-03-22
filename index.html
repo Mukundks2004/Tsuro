@@ -3,24 +3,23 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Tsuro</title>
-
-    <link rel="stylesheet" type="text/css" href="style.css">
-
     <script src="libraries/p5.min.js"></script>
-    <script src="board.js" type="module"></script>
-    <script src="inventory.js" type="module"></script>
+    <!-- <script src="tile.js"></script>
+    <script src="dragon.js"></script>
+    <script src="board.js"></script> -->
+    
+    <title>HomePage</title>
+
   </head>
 
   <body>
     <h1>Tsuro!</h1>
-    <div>
-      <script src="tile.js"></script>
-      <script src="dragon.js"></script>
-      <div id="boardContainer"></div>
-      <br>
-      <div id="inventoryContainer"></div>
-    </div>
+    <select id="dropdownColor">
+      <option value="aqua">Aqua</option>
+      <option value="blue">Blue</option>
+      <option value="lime">Lime</option>
+    </select>
+    <button id="startButton">Click me to start!</button>
+    <script src="script.js"></script>
   </body>
 </html>

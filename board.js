@@ -5,6 +5,7 @@ let tileSize = 90;
 let boardSize = 6;
 let lastClickedCoordX = -1;
 let lastClickedCoordY = -1;
+let player1Colour;
   
 function itIsYourTurn() {
   return true;
@@ -29,9 +30,7 @@ function updateBoard(event) {
 
 function moveDragons() {
   for (let dragon of dragons) {
-    while (board[dragon.y][dragon.x] !== 0) {
-      console.log(dragon);
-      
+    while (board[dragon.y][dragon.x] !== 0) {      
 
       let currentName = board[dragon.y][dragon.x].name;
       let otherVertex;
@@ -72,9 +71,14 @@ function moveDragons() {
   }
 }
 
+function getQueryParameter(parameterName) {
+  var urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(parameterName);
+}
+
 const boardSketch = (s) => {
   s.setup = () => {
-    dragons.push(new Dragon('yellow'));
+    dragons.push(new Dragon(getQueryParameter('color')));
     document.addEventListener('tileDispatched', updateBoard);
     for (let i = 0; i < boardSize; i++) {
       board.push([]);
