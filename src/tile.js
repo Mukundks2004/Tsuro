@@ -5,62 +5,6 @@ function moduloStrict(a, n) {
   return ((a % n) + n) % n;
 }
 
-class Point {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-  }
-
-  rotateQuaterTurn(centreX, centreY) {
-    let newDiffY = this.x - centreX;
-    let newDiffX = -1 * (this.y - centreY);
-    this.x = centreX + newDiffX;
-    this.y = centreY + newDiffY;
-  }
-
-  horizontallyFlipPoint(centreX) {
-    this.x = centreX + -1 * (this.x - centreX);
-  }
-
-  verticallyFlipPoint(centreY) {
-    this.y = centreY + -1 * (this.y - centreY);
-  }
-}
-
-class Bezier {
-  constructor(x1, y1, x2, y2, x3, y3, x4, y4) {
-    this.points = [new Point(x1, y1), new Point(x2, y2), new Point(x3, y3), new Point(x4, y4)];
-    this.color = 'wheat'
-  }
-
-  rotateBezier(times, centreX, centreY) {
-    for (let point of this.points) {
-      for (let i = 0; i < times; i++) {
-        point.rotateQuaterTurn(centreX, centreY);
-      }
-    }
-  }
-
-  horizontallyFlipBezier(centreX) {
-    for (let point of this.points) {
-      point.horizontallyFlipPoint(centreX);
-    }
-  }
-
-  verticallyFlipBezier(centreY) {
-    for (let point of this.points) {
-      point.verticallyFlipPoint(centreY);
-    }
-  }
-
-  moveBy(diffX, diffY) {
-    for (let point of this.points) {
-      point.x += diffX;
-      point.y += diffY;
-    }
-  }
-}
-
 class Tile {
   constructor(x, y) {
     this.x = x;
@@ -85,7 +29,10 @@ class Tile {
 
   getRandomTileName() {
     let options = [
-      '61257034', '70123645', '12345670', '01234567', '01452637', '02713456', '50724613'
+      '01234567', '03612547', '04152637', '50147236', '70123456',
+      '01452637', '01453672', '50142637', '02713546', 
+      '03472651', '02134657', '12560437', '12560347',
+      '71263504', '02734615'
     ]
     return options[Math.floor(Math.random() * options.length)];
   }
@@ -93,10 +40,11 @@ class Tile {
   setTileArcs(pathInfo) {
     this.paths = [];
     for (let i = 0; i < pathInfo.length; i++) {
-
-      // Assumption: second comes after first in the cycle (so difference = 1, 2, 3, 4 but no more)
       let first = parseInt(pathInfo[i]);
       let second = parseInt(pathInfo[i + 1]);
+      if ((moduloStrict(second - first), 8) > 4) {
+        [first, second] = [second, first];
+      }
       let difference = moduloStrict(second - first, 8);
       let arc;
 
