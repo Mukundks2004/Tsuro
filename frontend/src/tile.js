@@ -1,6 +1,6 @@
 import { tileSize, tilePercent } from './consts.js';
 import { Bezier } from './bezier.js';
-import { moduloStrict } from './utilities.js';
+import { moduloStrict } from './utils/utilities.js';
 
 export class Tile {
   constructor(x, y) {

@@ -1,4 +1,4 @@
-import { moduloStrict } from './utilities.js';
+import { moduloStrict } from './utils/utilities.js';
 import { Dragon } from './dragon.js';
 
 let board = []
@@ -8,7 +8,6 @@ let tileSize = 90;
 let boardSize = 6;
 let lastClickedCoordX = -1;
 let lastClickedCoordY = -1;
-let player1Colour;
   
 function itIsYourTurn() {
   return true;
@@ -85,7 +84,7 @@ function printParams() {
 
 const boardSketch = (s) => {
   s.setup = () => {
-    dragons.push(new Dragon('blue', 6));
+    dragons.push(new Dragon('yellow', 6));
     printParams();
     document.addEventListener('tileDispatched', updateBoard);
     for (let i = 0; i < boardSize; i++) {
