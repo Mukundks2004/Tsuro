@@ -39,12 +39,14 @@ class Tile {
 
   setTileArcs(pathInfo) {
     this.paths = [];
+    
     for (let i = 0; i < pathInfo.length; i++) {
       let first = parseInt(pathInfo[i]);
       let second = parseInt(pathInfo[i + 1]);
       if ((moduloStrict(second - first), 8) > 4) {
         [first, second] = [second, first];
       }
+
       let difference = moduloStrict(second - first, 8);
       let arc;
 

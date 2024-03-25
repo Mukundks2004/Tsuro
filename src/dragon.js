@@ -1,9 +1,11 @@
-let totalCount = 0;
+//This class currently only supports one dragon at a time
+
 class Dragon {
-  constructor(color) {
-    this.Id = totalCount++;
+  constructor(color, boardSize) {
+    this.Id = 0; //TODO: change once we have some kind of global player count
     this.color = color;
-    this.radius = 3;
+    this.radius = 3; //TODO: make bigger
+    this.boardSize = boardSize;
     this.setRandomStartingPos();
     this.calculatePixelCoords();
     this.isPlaying = true;
@@ -24,29 +26,29 @@ class Dragon {
     return (this.x < 0 || this.y < 0 || this.x >= boardSize || this.y >= this.boardSize);
   }
 
+  //See if there is any way to make this more compact
+
+  //TODO: test this
   setRandomStartingPos(boardSize) {
     let seed = Math.random();
     switch (this.Id) {
       case 0:
         this.y = 0
         this.x = Math.floor(6 * seed);
-        this.vertex = Math.floor(2 * seed);
         break;
       case 1:
         this.y = Math.floor(6 * random());
         this.x = boardSize - 1;
-        this.vertex = 2 + Math.floor(2 * seed);
         break;
       case 2:
         this.y = boardSize - 1;
         this.x = Math.floor(6 * random());
-        this.vertex = 4 + Math.floor(2 * seed);
         break;
       case 3:
         this.y = Math.floor(6 * random());
         this.x = 0;
-        this.vertex = 6 + Math.floor(2 * seed);
         break;
     }
+    this.vertex = 2 * this.Id + Math.floor(2 * seed);
   }
 }

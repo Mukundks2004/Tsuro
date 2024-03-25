@@ -1,3 +1,6 @@
+//I think eventually this entire file will just go lol
+//There will be a single dropdown for each player that they will access on the "player select screen"
+
 document.addEventListener('DOMContentLoaded', function () {
   const playerCountSelect = document.getElementById('playerCount');
   const playerTableDiv = document.getElementById('playerTable');

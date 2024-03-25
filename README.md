@@ -18,8 +18,23 @@ how to do this??
 8) When all players are eliminated, everyone gets to see the winner screen. When they close it they get sent back to menu. When all players close the game, the game gets discarded (haven't yet decided how to implement this). There is currently no way to restart the game with the same players, maybe I will implement this in the future.
     - Note: all of this relies on a cooperative host
 9) You can create a game (become a host) by just clicking the create game button and selecting the number of players. Once you have done this, you are locked in and cannot change the number of players. You must wait until all the spots fill up. You can only join one at a time and leaving the game will end it for everyone that has joined (eg: you have been disconnected).
+10) Quick summary of screens:
+    - Start (with some art maybe, or not), has usernmae and password, click start button to progress (you cant make new users only use sample data aka Mukund or Bob)
+    - You can't lof in if mukund or bob is already logged in.
+    - Game screen, make new game (redirects) or join current one (from list) -> latter goes to waiting page
+    - Create game screen, choose number of players, goes to waiting page (maybe choose board size)
+    - Waiting page displays who is waiting (usernames), allows players to choose colours, maybe starting positions, etc
+        - Also displays count of how many people are in and left, when people disconnect they stay 'in' but change from connected to disconnected. They are connected once they log in again.
+    - after waiting page you progress to game page
+        - When people die they stay on this page although at any point in time any player can leave by clicking the back button. The game continues and simply waits until the player whose turn it is makes a valid move.
+        - When the game ends, nothing changes, a modal pops up displaying winning players. When the modal is closed the player stays on the same page.
 
-TODO: add all the above
+
+
+
+TODO: add all the above, add unit tests
+TODO: orm for database, database with hosting?
+TODO: investigate prisma vs sequalize, orm for js, not typescript pls
 
 ## Some of these are not implemented yet:
 - Can play tsuro with up to four players on one computer
