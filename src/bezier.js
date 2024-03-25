@@ -1,4 +1,6 @@
-class Bezier {
+import { Point } from './point.js';
+
+export class Bezier {
     constructor(x1, y1, x2, y2, x3, y3, x4, y4) {
       this.points = [new Point(x1, y1), new Point(x2, y2), new Point(x3, y3), new Point(x4, y4)];
       this.color = 'wheat'

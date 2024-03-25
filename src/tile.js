@@ -1,11 +1,8 @@
-let tileSize = 90;
-let tileRatio = 0.95;
+import { tileSize, tilePercent } from './consts.js';
+import { Bezier } from './bezier.js';
+import { moduloStrict } from './utilities.js';
 
-function moduloStrict(a, n) {
-  return ((a % n) + n) % n;
-}
-
-class Tile {
+export class Tile {
   constructor(x, y) {
     this.x = x;
     this.y = y;
@@ -70,19 +67,19 @@ class Tile {
   getArc(curveType) {
     switch (curveType) {
       case 1:
-        return new Bezier(tileSize * (1 - tileRatio)/2 + tileSize/4, 0, tileSize * (1 - tileRatio)/2 + tileSize/4, tileSize * 1/4, tileSize - tileSize * (1 - tileRatio)/2 - tileSize/4, tileSize * 1/4, tileSize - tileSize * (1 - tileRatio)/2 - tileSize/4, 0);
+        return new Bezier(tileSize * (1 - tilePercent)/2 + tileSize/4, 0, tileSize * (1 - tilePercent)/2 + tileSize/4, tileSize * 1/4, tileSize - tileSize * (1 - tilePercent)/2 - tileSize/4, tileSize * 1/4, tileSize - tileSize * (1 - tilePercent)/2 - tileSize/4, 0);
       case 2:
-        return new Bezier(tileSize * (1 - tileRatio)/2 + tileSize/4, 0, tileSize * (1 - tileRatio)/2 + tileSize/4, tileSize * (1 - tileRatio)/2 + tileSize/4, tileSize * (1 - tileRatio)/2 + tileSize/4, tileSize * (1 - tileRatio)/2 + tileSize/4, tileSize, tileSize * (1 - tileRatio)/2 + tileSize/4);
+        return new Bezier(tileSize * (1 - tilePercent)/2 + tileSize/4, 0, tileSize * (1 - tilePercent)/2 + tileSize/4, tileSize * (1 - tilePercent)/2 + tileSize/4, tileSize * (1 - tilePercent)/2 + tileSize/4, tileSize * (1 - tilePercent)/2 + tileSize/4, tileSize, tileSize * (1 - tilePercent)/2 + tileSize/4);
       case 3:
-        return new Bezier(tileSize * (1 - tileRatio)/2 + tileSize/4, 0, tileSize * (1 - tileRatio)/2 + tileSize/4, tileSize * 2/3, tileSize * 2/3, tileSize - tileSize * (1 - tileRatio)/2 - tileSize/4, tileSize, tileSize - tileSize * (1 - tileRatio)/2 - tileSize/4);
+        return new Bezier(tileSize * (1 - tilePercent)/2 + tileSize/4, 0, tileSize * (1 - tilePercent)/2 + tileSize/4, tileSize * 2/3, tileSize * 2/3, tileSize - tileSize * (1 - tilePercent)/2 - tileSize/4, tileSize, tileSize - tileSize * (1 - tilePercent)/2 - tileSize/4);
       case 4:
-        return new Bezier(tileSize * (1 - tileRatio)/2 + tileSize/4, 0, tileSize * (1 - tileRatio)/2 + tileSize/4, tileSize * 1/2, tileSize - tileSize * (1 - tileRatio)/2 - tileSize/4, tileSize * 1/2, tileSize - tileSize * (1 - tileRatio)/2 - tileSize/4, tileSize);
+        return new Bezier(tileSize * (1 - tilePercent)/2 + tileSize/4, 0, tileSize * (1 - tilePercent)/2 + tileSize/4, tileSize * 1/2, tileSize - tileSize * (1 - tilePercent)/2 - tileSize/4, tileSize * 1/2, tileSize - tileSize * (1 - tilePercent)/2 - tileSize/4, tileSize);
       case 5:
-        return new Bezier(tileSize * (1 - tileRatio)/2 + tileSize/4, 0, tileSize * (1 - tileRatio)/2 + tileSize/4, 0, tileSize * (1 - tileRatio)/2 + tileSize/4, 0, tileSize * (1 - tileRatio)/2 + tileSize/4, tileSize);
+        return new Bezier(tileSize * (1 - tilePercent)/2 + tileSize/4, 0, tileSize * (1 - tilePercent)/2 + tileSize/4, 0, tileSize * (1 - tilePercent)/2 + tileSize/4, 0, tileSize * (1 - tilePercent)/2 + tileSize/4, tileSize);
       case 6:
-        return new Bezier(tileSize * (1 - tileRatio)/2 + tileSize/4, 0, tileSize * (1 - tileRatio)/2 + tileSize/4, tileSize - tileSize * (1 - tileRatio)/2 - tileSize/4, tileSize * (1 - tileRatio)/2 + tileSize/4, tileSize - tileSize * (1 - tileRatio)/2 - tileSize/4, 0, tileSize - tileSize * (1 - tileRatio)/2 - tileSize/4);
+        return new Bezier(tileSize * (1 - tilePercent)/2 + tileSize/4, 0, tileSize * (1 - tilePercent)/2 + tileSize/4, tileSize - tileSize * (1 - tilePercent)/2 - tileSize/4, tileSize * (1 - tilePercent)/2 + tileSize/4, tileSize - tileSize * (1 - tilePercent)/2 - tileSize/4, 0, tileSize - tileSize * (1 - tilePercent)/2 - tileSize/4);
       case 7:
-        return new Bezier(tileSize * (1 - tileRatio)/2 + tileSize/4, 0, tileSize * (1 - tileRatio)/2 + tileSize/4, tileSize * (1 - tileRatio)/2 + tileSize/4, tileSize * (1 - tileRatio)/2 + tileSize/4, tileSize * (1 - tileRatio)/2 + tileSize/4, 0, tileSize * (1 - tileRatio)/2 + tileSize/4);
+        return new Bezier(tileSize * (1 - tilePercent)/2 + tileSize/4, 0, tileSize * (1 - tilePercent)/2 + tileSize/4, tileSize * (1 - tilePercent)/2 + tileSize/4, tileSize * (1 - tilePercent)/2 + tileSize/4, tileSize * (1 - tilePercent)/2 + tileSize/4, 0, tileSize * (1 - tilePercent)/2 + tileSize/4);
     }
   }
 }

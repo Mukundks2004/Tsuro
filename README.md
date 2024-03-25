@@ -35,7 +35,9 @@ how to do this??
 TODO: add all the above, add unit tests
 TODO: orm for database, database with hosting?
 TODO: investigate prisma vs sequalize, orm for js, not typescript pls
-
+TODO: make tile to click light up or something, maybe make it different color ->
+    On that note, maybe also make the clickable tiles change colour when you hover over them idk
+Could also refactor into one canvas somehow?? nah i think two is good actually
 ## Some of these are not implemented yet:
 - Can play tsuro with up to four players on one computer
 - Can see who is looking at the board by selecting using the radio button at the top of screen4
