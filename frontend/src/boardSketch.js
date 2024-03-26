@@ -8,10 +8,9 @@ let viewingPlayer;
 const boardSketch = (s) => {
     s.setup = () => {
         // load game
-        game = new Game([new Player('red')]);
+        game = new Game([new Player('black'), new Player('blue')]);
 
         s.createCanvas(game.board.boardSize * TILESIZE, game.board.boardSize * TILESIZE);
-        // viewingPlayer = getViewingPlayer()
         viewingPlayer = game.players[game.currentPlayerIndex];
 
         // boardCanvas.mousePressed(boardClicked);
@@ -48,13 +47,14 @@ const boardSketch = (s) => {
                 }
             }
         }
-    s.noStroke();
-    for (let player of game.players) {
-        let dragon = player.dragon;
-        s.fill(dragon.color);
-        s.ellipse(dragon.coords.x, dragon.coords.y, dragon.radius);
-    }
-  };
+
+        s.noStroke();
+        for (let player of game.players) {
+            let dragon = player.dragon;
+            s.fill(dragon.color);
+            s.ellipse(dragon.coords.x, dragon.coords.y, dragon.radius);
+        }
+    };
 }
 
 new p5(boardSketch, 'boardContainer');

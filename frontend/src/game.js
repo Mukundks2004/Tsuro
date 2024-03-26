@@ -15,6 +15,16 @@ export class Game {
 		this.players = players;
 	}
 
+	//Game is over when every player has died
+	isGameOver() {
+		for (let player of this.players) {
+			if (player.isPlaying) {
+				return false;
+			}
+		}
+		return true;
+	}
+
   	moveDragons() {
 		for (let player of this.players) {
 			let dragon = player.dragon;

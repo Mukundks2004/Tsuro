@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../src/styles/style.css">
-    
-    <title>HomePage</title>
-  </head>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../src/styles/style.css">
+        
+        <title>LoginPage</title>
+    </head>
 
-  <body>
-    <h1>Tsuro!</h1>
+    <body>
+        <h1>Log in</h1>
 
-    <label for="playerCount">How many are playing?</label>
-    <br>
-    <select id="playerCount">
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-    </select>
-
-    <div id="playerTable"></div>
-
-    <button id="startButton">Click me to start!</button>
-    <script src="../src/pages/script.js"></script>
-  </body>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+            <br>
+        
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <br>
+            
+            <input type="submit" value="Login">
+        </form>
+        
+        <script src="../src/pages/index.js"></script>
+    </body>
 </html>
