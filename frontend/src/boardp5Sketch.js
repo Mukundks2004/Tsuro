@@ -1,11 +1,9 @@
 import { moduloStrict } from './utils/utilities.js';
 import { Dragon } from './dragon.js';
+import { TILESIZE, TILEPERCENT, BOARDSIZE } from './utils/consts.js'
 
 let board = []
 let dragons = []
-let tilePercent = 0.95;
-let tileSize = 90;
-let boardSize = 6;
 let lastClickedCoordX = -1;
 let lastClickedCoordY = -1;
   
@@ -21,8 +19,8 @@ function sendGetTileQuery() {
 function updateBoard(event) {
   let newTile = event.detail;
   for (let path of newTile.paths) {
-    path.moveBy(-1 * newTile.x * tileSize, 0);
-    path.moveBy(lastClickedCoordX * tileSize, lastClickedCoordY * tileSize)
+    path.moveBy(-1 * newTile.x * TILESIZE, 0);
+    path.moveBy(lastClickedCoordX * TILESIZE, lastClickedCoordY * TILESIZE)
   }
   board[lastClickedCoordY][lastClickedCoordX] = event.detail;
   lastClickedCoordX = -1;
@@ -65,7 +63,7 @@ function moveDragons() {
       dragon.vertex = newVertexOtherTile;
       dragon.calculatePixelCoords();
 
-      if (dragon.isOffBoard(boardSize)) {
+      if (dragon.isOffBoard(BOARDSIZE)) {
         dragon.isPlaying = false;
         break;
       }
@@ -87,20 +85,20 @@ const boardSketch = (s) => {
     dragons.push(new Dragon('yellow', 6));
     printParams();
     document.addEventListener('tileDispatched', updateBoard);
-    for (let i = 0; i < boardSize; i++) {
+    for (let i = 0; i < BOARDSIZE; i++) {
       board.push([]);
-      for (let j = 0; j < boardSize; j++) {
+      for (let j = 0; j < BOARDSIZE; j++) {
         board[i].push(0);
       }
     }
-    let boardCanvas = s.createCanvas(boardSize * tileSize, boardSize * tileSize);
+    let boardCanvas = s.createCanvas(BOARDSIZE * TILESIZE, BOARDSIZE * TILESIZE);
     boardCanvas.mousePressed(boardClicked);
   };
 
 
   function boardClicked() {
-    lastClickedCoordX = Math.floor(s.mouseX / tileSize);
-    lastClickedCoordY = Math.floor(s.mouseY / tileSize);
+    lastClickedCoordX = Math.floor(s.mouseX / TILESIZE);
+    lastClickedCoordY = Math.floor(s.mouseY / TILESIZE);
     if (lastClickedCoordX === dragons[0].x && lastClickedCoordY === dragons[0].y) {
       sendGetTileQuery();
     }
@@ -109,11 +107,11 @@ const boardSketch = (s) => {
   
 
   s.draw = () => {
-    let xCoordOfTile = Math.floor(s.mouseX / tileSize);
-    let yCoordOfTile = Math.floor(s.mouseY / tileSize);
+    let xCoordOfTile = Math.floor(s.mouseX / TILESIZE);
+    let yCoordOfTile = Math.floor(s.mouseY / TILESIZE);
     s.background('saddlebrown');
-    for (let i = 0; i < boardSize; i++) {
-      for (let j = 0; j < boardSize; j++) {
+    for (let i = 0; i < BOARDSIZE; i++) {
+      for (let j = 0; j < BOARDSIZE; j++) {
         s.noStroke();
         let tile = board[i][j];
         if (tile === 0) {
@@ -123,12 +121,12 @@ const boardSketch = (s) => {
           else {
             s.fill('chocolate');
           }
-          s.square(tileSize * (j + (1 - tilePercent)/2), tileSize * (i + (1 - tilePercent)/2), tileSize * tilePercent, 0);
+          s.square(TILESIZE * (j + (1 - TILEPERCENT)/2), TILESIZE * (i + (1 - TILEPERCENT)/2), TILESIZE * TILEPERCENT, 0);
         }
         else {
           s.fill('maroon');
           s.noStroke();
-          s.square(tileSize * (j + (1 - tilePercent)/2), tileSize * (i + (1 - tilePercent)/2), tileSize * tilePercent, 0);
+          s.square(TILESIZE * (j + (1 - TILEPERCENT)/2), TILESIZE * (i + (1 - TILEPERCENT)/2), TILESIZE * TILEPERCENT, 0);
           s.noFill();
           for (let path of tile.paths) {
             s.strokeWeight(3);

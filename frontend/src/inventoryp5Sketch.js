@@ -1,9 +1,8 @@
-import { tileSize, tilePercent } from './consts.js';
+import { TILESIZE, TILEPERCENT, TILESPERPLAYER } from './utils/consts.js';
 import { Tile } from './tile.js';
 
 let selectedTileNumber = -1;
 let inventory = [];
-let inventorySize = 4;
 
 function receiveTileDataQuery(_) {
   if (selectedTileNumber !== -1) {
@@ -18,15 +17,15 @@ const inventorySketch = (s) => {
   s.setup = () => {
     document.addEventListener('boardClicked', receiveTileDataQuery);
     
-    for (let i = 0; i < inventorySize; i++) {
+    for (let i = 0; i < TILESPERPLAYER; i++) {
       inventory.push(new Tile(i, 0));
     }
-    let inventoryCanvas = s.createCanvas(inventorySize * tileSize, tileSize);
+    let inventoryCanvas = s.createCanvas(TILESPERPLAYER * TILESIZE, TILESIZE);
     inventoryCanvas.mousePressed(inventoryClicked)
   }
 
   function inventoryClicked() {
-    let xCoordOfTile = Math.floor(s.mouseX / tileSize);
+    let xCoordOfTile = Math.floor(s.mouseX / TILESIZE);
     if (xCoordOfTile === selectedTileNumber) {
       let myTile = inventory[xCoordOfTile];
       myTile.rotateTile();
@@ -38,7 +37,7 @@ const inventorySketch = (s) => {
 
   s.draw = () => {
     s.background(0);
-    for (let i = 0; i < inventorySize; i++) {
+    for (let i = 0; i < TILESPERPLAYER; i++) {
       if (i === selectedTileNumber) {
         s.fill('darkgoldenrod');
       }
@@ -46,7 +45,7 @@ const inventorySketch = (s) => {
         s.fill('maroon');
       }
       s.noStroke();
-      s.square(tileSize * (i + (1 - tilePercent)/2), tileSize * (1 - tilePercent)/2, tileSize * tilePercent, 0);
+      s.square(TILESIZE * (i + (1 - TILEPERCENT)/2), TILESIZE * (1 - TILEPERCENT)/2, TILESIZE * TILEPERCENT, 0);
       s.noFill();
       for (let path of inventory[i].paths) {
         s.strokeWeight(3);

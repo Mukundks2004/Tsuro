@@ -1,4 +1,4 @@
-import { tileSize, tilePercent } from './consts.js'
+import { TILESIZE, TILEPERCENT } from './consts.js'
 
 //Represents the collection of tiles a player owns
 

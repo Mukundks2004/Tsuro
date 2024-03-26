@@ -1,10 +1,10 @@
-import { tileSize, tilePercent } from './consts.js'
+import { TILESIZE, TILEPERCENT } from './utils/consts.js'
 
 // Represents a single board state
 
 class Board {
-    constructor(boardSize) {
+    constructor(BOARDSIZE) {
         this.tiles = [];
-        this.boardSize = boardSize;
+        this.BOARDSIZE = BOARDSIZE;
     }
 }
