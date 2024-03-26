@@ -40,6 +40,9 @@ TODO: make tile to click light up or something, maybe make it different color ->
 Could also refactor into one canvas somehow?? nah i think two is good actually
 
 TODO: good documentation of rules
+TODO: add pics for rules
+TODO: order usings pls
+TODO: make indenting consistent
 
 ## Some of these are not implemented yet:
 - Can play tsuro with up to four players on one computer

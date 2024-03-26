@@ -1,8 +1,8 @@
-import { TILESIZE, TILEPERCENT } from './consts.js'
+import { TILESIZE, TILEPERCENT } from './utils/consts.js'
 
 //Represents the collection of tiles a player owns
 
-class inventory {
+export class Inventory {
     constructor(inventorySize) {
         this.inventorySize = inventorySize;
         this.tiles = [];

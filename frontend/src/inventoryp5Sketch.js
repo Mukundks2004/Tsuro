@@ -39,7 +39,7 @@ const inventorySketch = (s) => {
     s.background(0);
     for (let i = 0; i < TILESPERPLAYER; i++) {
       if (i === selectedTileNumber) {
-        s.fill('darkgoldenrod');
+        s.fill('purple');
       }
       else {
         s.fill('maroon');

@@ -1,8 +1,10 @@
 import { TILESPERPLAYER } from './utils/consts.js';
 import { Dragon } from './dragon.js';
+import { Tile } from './tile.js';
+import { Inventory } from './inventory.js';
 
 
-class Player {
+export class Player {
   constructor(color) {
     this.color = color;
     this.number = 0; //currently only supoorts one player
@@ -11,5 +13,6 @@ class Player {
       this.tilesOwned.push(new Tile(i, 0));
     }
     this.dragon = new Dragon(color);
+    this.inventory = new Inventory(TILESPERPLAYER);
   }
 }

@@ -63,7 +63,7 @@ function moveDragons() {
       dragon.vertex = newVertexOtherTile;
       dragon.calculatePixelCoords();
 
-      if (dragon.isOffBoard(BOARDSIZE)) {
+      if (dragon.isOffBoard()) {
         dragon.isPlaying = false;
         break;
       }
@@ -82,7 +82,7 @@ function printParams() {
 
 const boardSketch = (s) => {
   s.setup = () => {
-    dragons.push(new Dragon('yellow', 6));
+    dragons.push(new Dragon('red', 6));
     printParams();
     document.addEventListener('tileDispatched', updateBoard);
     for (let i = 0; i < BOARDSIZE; i++) {
@@ -104,11 +104,9 @@ const boardSketch = (s) => {
     }
   }
 
-  
-
   s.draw = () => {
-    let xCoordOfTile = Math.floor(s.mouseX / TILESIZE);
     let yCoordOfTile = Math.floor(s.mouseY / TILESIZE);
+    let xCoordOfTile = Math.floor(s.mouseX / TILESIZE);
     s.background('saddlebrown');
     for (let i = 0; i < BOARDSIZE; i++) {
       for (let j = 0; j < BOARDSIZE; j++) {

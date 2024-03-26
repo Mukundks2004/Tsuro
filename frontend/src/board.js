@@ -1,10 +1,11 @@
-import { TILESIZE, TILEPERCENT } from './utils/consts.js'
+import { moduloStrict } from './utils/utilities.js';
+
 
 // Represents a single board state
 
-class Board {
-    constructor(BOARDSIZE) {
+export class Board {
+    constructor(boardSize) {
         this.tiles = [];
-        this.BOARDSIZE = BOARDSIZE;
+        this.boardSize = boardSize;
     }
 }
