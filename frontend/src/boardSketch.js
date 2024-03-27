@@ -10,10 +10,10 @@ const boardSketch = (s) => {
         // load game
         game = new Game([new Player('black'), new Player('blue')]);
 
-        s.createCanvas(game.board.boardSize * TILESIZE, game.board.boardSize * TILESIZE);
+        let boardCanvas = s.createCanvas(game.board.boardSize * TILESIZE, game.board.boardSize * TILESIZE);
         viewingPlayer = game.players[game.currentPlayerIndex];
 
-        // boardCanvas.mousePressed(boardClicked);
+        boardCanvas.mousePressed(boardClicked);
     };
 
     s.draw = () => {
@@ -55,6 +55,10 @@ const boardSketch = (s) => {
             s.ellipse(dragon.coords.x, dragon.coords.y, dragon.radius);
         }
     };
+
+    function boardClicked() {
+        console.log('yay');
+    }
 }
 
 new p5(boardSketch, 'boardContainer');
