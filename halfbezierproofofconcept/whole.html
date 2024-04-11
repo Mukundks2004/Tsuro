@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whole Bezier</title>
+</head>
+<body>
+    <canvas id="MyBezierCanvas">
+    </canvas>
+    <div class="MySliderDiv">
+        <input type="range" min="0" max="10" value="5" class="slider" id="MySlider">
+    </div>
+    <script>
+        var rangeInput = document.getElementById("MySlider");
+
+        rangeInput.addEventListener("change", function() {
+            Everything(rangeInput.value);
+        });
+
+        window.onload = function() {
+            Everything(rangeInput.value);
+        }
+
+
+
+        var canvas = document.getElementById('MyBezierCanvas');
+        var ctx = canvas.getContext('2d');
+
+        ctx.canvas.width = 600;
+        ctx.canvas.height = 600;
+        
+        
+
+        function Everything(value) {
+            ctx.fillStyle = 'darkgrey';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    
+            ctx.rect(20, 20, 150, 150);
+            ctx.rect(190, 20, 150, 150);
+            ctx.fillStyle = "lightgrey";
+            ctx.fill();
+            ctx.stroke();
+    
+            const size = 150;
+            const margin = 20;
+    
+            let xA = size/4;
+            let yA = 0;
+    
+            let xB = size/4;
+            let yB = size/2;
+    
+            let xC = 3 * size/4;
+            let yC = size/2;
+    
+            let xD = 3 * size/4;
+            let yD = size;
+    
+            let xOffset = margin;
+            let yOffset = margin;
+    
+            ctx.beginPath();
+    
+            ctx.moveTo(xOffset + xA, yOffset + yA);
+            ctx.bezierCurveTo(xOffset + xB, yOffset + yB, xOffset + xC, yOffset + yC, xOffset + xD, yOffset + yD);
+            ctx.stroke();
+            
+            xOffset += size + margin;
+    
+            let u0, u1;
+            let qxa, qxb, qxc, qxd;
+            let qya, qyb, qyc, qyd;
+    
+            let xa, xb, xc, xd;
+            let ya, yb, yc, yd;
+    
+            let x1 = xA;
+            let y1 = yA;
+    
+            let bx1 = xB;
+            let by1 = yB;
+            let bx2 = xC;
+            let by2 = yC;
+    
+            let x2 = xD;
+            let y2 = yD;
+    
+            //Starting point
+            const t0 = 0;
+            //Ending point
+            const t1 = 10/10;
+            //const t1 = 0.8;
+
+            u0, u1;
+            qxa, qxb, qxc, qxd;
+            qya, qyb, qyc, qyd;
+    
+            xa, xb, xc, xd;
+            ya, yb, yc, yd;
+    
+    
+    
+
+    
+            u0 = 1.0 - t0
+            u1 = 1.0 - t1
+    
+            qxa =  x1*u0*u0 + bx1*2*t0*u0 + bx2*t0*t0
+            qxb =  x1*u1*u1 + bx1*2*t1*u1 + bx2*t1*t1
+            qxc = bx1*u0*u0 + bx2*2*t0*u0 +  x2*t0*t0
+            qxd = bx1*u1*u1 + bx2*2*t1*u1 +  x2*t1*t1
+    
+            qya =  y1*u0*u0 + by1*2*t0*u0 + by2*t0*t0
+            qyb =  y1*u1*u1 + by1*2*t1*u1 + by2*t1*t1
+            qyc = by1*u0*u0 + by2*2*t0*u0 +  y2*t0*t0
+            qyd = by1*u1*u1 + by2*2*t1*u1 +  y2*t1*t1
+    
+            xa = qxa*u0 + qxc*t0
+            xb = qxa*u1 + qxc*t1
+            xc = qxb*u0 + qxd*t0
+            xd = qxb*u1 + qxd*t1
+    
+            ya = qya*u0 + qyc*t0
+            yb = qya*u1 + qyc*t1
+            yc = qyb*u0 + qyd*t0
+            yd = qyb*u1 + qyd*t1
+            
+            ctx.fillStyle = '';
+            ctx.beginPath();
+            ctx.moveTo(xOffset + xa, yOffset + ya);
+            ctx.bezierCurveTo(xOffset + xb, yOffset + yb, xOffset + xc, yOffset + yc, xOffset + xd, yOffset + yd);
+            //ctx.closePath();
+            //ctx.stroke();
+        }
+    
+    </script>
+</body>
+</html>
