@@ -59,12 +59,11 @@ const boardSketch = (s, onTurnChange) => {
         let clicked_x = s.mouseX;
         let clicked_y = s.mouseY;
         let theCurrentPlayer = game.getCurrentPlayer();
-        console.log("inven before:", theCurrentPlayer.inventory);
-        if (theCurrentPlayer.inventory.selectedTileIndex !== -1) {
+        let currentDragon = theCurrentPlayer.dragon;
+        let xCoordTileClick = Math.floor(clicked_x / TILESIZE);
+        let yCoordTileClick = Math.floor(clicked_y / TILESIZE);
+        if (theCurrentPlayer.inventory.selectedTileIndex !== -1 && currentDragon.x === xCoordTileClick && currentDragon.y === yCoordTileClick) {
 
-            let xCoordTileClick = Math.floor(clicked_x / TILESIZE);
-            let yCoordTileClick = Math.floor(clicked_y / TILESIZE);
-            console.log("x and y coords of click:",xCoordTileClick, yCoordTileClick);
 
             let coolTile = game.getCurrentPlayer().getSelectedTileOrNull();
             
@@ -73,26 +72,25 @@ const boardSketch = (s, onTurnChange) => {
                 path.moveBy(-1 * coolTile.x * TILESIZE, 0);
                 path.moveBy(xCoordTileClick * TILESIZE, yCoordTileClick * TILESIZE)
             }
-            console.log(coolTile);
             game.board.tiles[yCoordTileClick][xCoordTileClick] = coolTile;
 
             theCurrentPlayer.inventory.tiles[coolTile.x] = new Tile(coolTile.x, 0);
             theCurrentPlayer.inventory.selectedTileIndex = -1;
 
-            console.log(game.board.tiles);
 
             // i think this is not needed. The only time this is ever needed is when setting the paths initially and then recalibrating them. it makes sense to try to keep them consistent
             // so you should try to maintain them.
+
+            //rename cool tile to something better
             coolTile.x = xCoordTileClick;
             coolTile.y = yCoordTileClick;
+            game.moveDragons();
+            game.nextTurn();
+            onTurnChange();
         }
 
-        game.moveDragons();
-        game.nextTurn();
-        onTurnChange();
 
     }
 }
 
 export default boardSketch;
-//new p5(boardSketch, 'boardContainer');

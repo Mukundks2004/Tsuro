@@ -21,7 +21,7 @@ export class Dragon {
 		this.coords = new Point(xPixel, yPixel);
 		
 		for (let i = 0; i < Math.floor(this.vertex / 2); i++) {
-		this.coords.rotateQuaterTurn((this.x + 0.5) * TILESIZE, (this.y + 0.5) * TILESIZE);
+			this.coords.rotateQuaterTurn((this.x + 0.5) * TILESIZE, (this.y + 0.5) * TILESIZE);
 		}
 	}
 

@@ -35,12 +35,11 @@ gameOverButton.addEventListener("click", openModal);
 closeModal.addEventListener("click", closeModalFunc);
 
 resetButton.addEventListener("click", () => {
-    // Your reset game logic here
+    // reset game logic here
     console.log("Game reset logic goes here.");
     closeModalFunc(); // Close the modal after resetting
 });
 
-// Close the modal if the user clicks anywhere outside of the modal content
 window.addEventListener("click", (event) => {
     if (event.target === modal) {
         closeModalFunc();
