@@ -35,6 +35,7 @@ const boardSketch = (s) => {
                     s.noStroke();
                     s.square(TILESIZE * (j + (1 - TILEPERCENT)/2), TILESIZE * (i + (1 - TILEPERCENT)/2), TILESIZE * TILEPERCENT, 0);
                     s.noFill();
+                    console.log("paths: row, col: ", i, j);
                     for (let path of tile.paths) {
                         s.strokeWeight(3);
                         s.stroke(path.color);
@@ -67,7 +68,11 @@ const boardSketch = (s) => {
             coolTile.y = yCoordTileClick;
             console.log(coolTile);
             game.board.tiles[yCoordTileClick][xCoordTileClick] = coolTile;
+
+            console.log(game.board.tiles);
         }
+
+        game.moveDragons();
     }
 }
 

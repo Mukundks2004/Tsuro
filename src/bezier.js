@@ -32,4 +32,11 @@ export class Bezier {
         point.y += diffY;
       }
     }
+
+    moveTo(x, y) {
+      for (let point of this.points) {
+        point.x = x;
+        point.y = y;
+      }
+    }
   }
