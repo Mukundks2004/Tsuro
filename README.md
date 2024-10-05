@@ -1,4 +1,4 @@
-# TsuroLocal
+# TsuroMultiplayer
 
 ## IMPORTANT NOTE
 
