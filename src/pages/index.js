@@ -1,5 +1,5 @@
 function gotoGame() {
-    window.location.href = "gamepage.html";
+    window.location.href = "public/gamepage.html";
 }
 
 const messageElement = document.getElementById('messagePlace');
