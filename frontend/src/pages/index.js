@@ -1,17 +1,28 @@
-logins = {
-    "Mukund" : "123",
-    "Test" : "1"
+function gotoGame() {
+    window.location.href = "gamepage.html";
+}
+
+const messageElement = document.getElementById('messagePlace');
+
+const fetchHello = async () => {
+    const response = await fetch('http://localhost:3000/hello');
+    const data = await response.json();
+    messageElement.textContent = data.message;
 };
 
-document.getElementById("loginForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-    
-    if (username in logins && logins[username] === password) {
-        window.location.href = "gamepage.html";
-    } else {
-        alert("Incorrect username or password. Please try again.");
-    }
-});
+const fetchGoodbye = async () => {
+    const response = await fetch('http://localhost:3000/goodbye');
+    const data = await response.json();
+    messageElement.textContent = data.message;
+};
+
+const fetchWow = async () => {
+    const response = await fetch('http://localhost:3000/wow');
+    const data = await response.json();
+    messageElement.textContent = data.message;
+};
+
+document.getElementById("gotoGamePage").addEventListener("click", gotoGame);
+document.getElementById("getHello").addEventListener("click", fetchHello);
+document.getElementById("getGoodbye").addEventListener("click", fetchGoodbye);
+document.getElementById("getWow").addEventListener("click", fetchWow);
