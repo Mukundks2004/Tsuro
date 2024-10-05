@@ -54,18 +54,19 @@ const boardSketch = (s) => {
 
     function boardClicked() {
 
-        console.log('yay', game.players[game.currentPlayerIndex].inventory.selectedTileIndex);
         let clicked_x = s.mouseX;
         let clicked_y = s.mouseY;
         if (game.players[game.currentPlayerIndex].inventory.selectedTileIndex !== -1) {
-            let currentInventory = game.players[game.currentPlayerIndex].inventory;
-            let selectedTile = currentInventory.tiles[game.players[game.currentPlayerIndex].inventory.selectedTileIndex];
-            console.log(selectedTile)
 
             let xCoordTileClick = Math.floor(clicked_x / TILESIZE);
             let yCoordTileClick = Math.floor(clicked_y / TILESIZE);
-            console.log(xCoordTileClick, yCoordTileClick);
+            console.log("x and y coords of click:",xCoordTileClick, yCoordTileClick);
 
+            let coolTile = game.getCurrentPlayer().getSelectedTileOrNull();
+            coolTile.x = xCoordTileClick;
+            coolTile.y = yCoordTileClick;
+            console.log(coolTile);
+            game.board.tiles[yCoordTileClick][xCoordTileClick] = coolTile;
         }
     }
 }
