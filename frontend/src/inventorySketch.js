@@ -1,21 +1,24 @@
 import { Inventory } from './inventory.js';
 import { Tile } from './tile.js';
+import { Player } from './player.js';
 import { TILESIZE, TILEPERCENT, TILESPERPLAYER } from './utils/consts.js';
 
-let inventory;
 
 const inventorySketch = (s) => {
+    let inventory;
     s.setup = () => {
         let inventoryCanvas = s.createCanvas(TILESPERPLAYER * TILESIZE, TILESIZE);
-        // inventory = getInventoryOfViewingPlayer()
-        inventory = new Inventory(TILESPERPLAYER);
-        for (let i = 0; i < TILESPERPLAYER; i++) {
-            inventory.tiles.push(new Tile(i, 0));
-        }
+        //let currentPlayer = window.game.getCurrentPlayer();
+        //inventory = currentPlayer.inventory;
+        // for (let i = 0; i < TILESPERPLAYER; i++) {
+        //     inventory.tiles.push(new Tile(i, 0));
+        // }
         inventoryCanvas.mousePressed(inventoryClicked)
     }
 
     s.draw = () => {
+        let currentPlayer = window.game.getCurrentPlayer();
+        inventory = currentPlayer.inventory;
         s.background(0);
         for (let i = 0; i < TILESPERPLAYER; i++) {
             if (i === inventory.selectedTileIndex) {
@@ -27,6 +30,10 @@ const inventorySketch = (s) => {
             s.noStroke();
             s.square(TILESIZE * (i + (1 - TILEPERCENT)/2), TILESIZE * (1 - TILEPERCENT)/2, TILESIZE * TILEPERCENT, 0);
             s.noFill();
+            if (inventory.tiles[i] == undefined) {
+                console.log("oop");
+                console.log(inventory.tiles);
+            }
             for (let path of inventory.tiles[i].paths) {
                 s.strokeWeight(3);
                 s.stroke('wheat');

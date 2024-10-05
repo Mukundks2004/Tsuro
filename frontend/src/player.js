@@ -4,14 +4,15 @@ import { Tile } from './tile.js';
 import { Inventory } from './inventory.js';
 
 export class Player {
-    constructor(color) {
+    constructor(color, number) {
         this.color = color;
-        this.number = 0; //currently only supoorts one player
+        this.number = number;
         this.tilesOwned = [];
-        for (let i = 0; i < TILESPERPLAYER; i++) {
-            this.tilesOwned.push(new Tile(i, 0));
-        }
-        this.dragon = new Dragon(color);
+        console.log("generating tiles for player: ",number);
         this.inventory = new Inventory(TILESPERPLAYER);
+        for (let i = 0; i < TILESPERPLAYER; i++) {
+            this.inventory.tiles.push(new Tile(i, 0));
+        }
+        this.dragon = new Dragon(color, number);
     }
 }

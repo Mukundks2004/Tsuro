@@ -8,6 +8,7 @@ export class Tile {
     this.y = y;
     this.paths = [];
     this.initializePaths();
+    console.log("making new tile!", this.paths);
   }
 
   initializePaths() {

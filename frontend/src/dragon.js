@@ -4,8 +4,8 @@ import { Point } from './point.js';
 //This class currently only supports one dragon at a time
 
 export class Dragon {
-	constructor(color) {
-		this.Id = 0; //TODO: change once we have some kind of global player count
+	constructor(color, num) {
+		this.Id = num; //TODO: change once we have some kind of global player count
 		this.color = color;
 		this.radius = 3; //TODO: make bigger
 		this.boardSize = BOARDSIZE; // Used for random location generation
@@ -40,15 +40,15 @@ export class Dragon {
 			this.x = Math.floor(6 * seed);
 			break;
 		case 1:
-			this.y = Math.floor(6 * random());
+			this.y = Math.floor(6 * Math.random());
 			this.x = this.boardSize - 1;
 			break;
 		case 2:
 			this.y = this.boardSize - 1;
-			this.x = Math.floor(6 * random());
+			this.x = Math.floor(6 * Math.random());
 			break;
 		case 3:
-			this.y = Math.floor(6 * random());
+			this.y = Math.floor(6 * Math.random());
 			this.x = 0;
 			break;
 		}

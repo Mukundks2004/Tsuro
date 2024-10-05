@@ -18,12 +18,20 @@ export class Game {
 	//Game is over when every player has died
 	isGameOver() {
 		for (let player of this.players) {
-			if (player.isPlaying) {
+			if (player.dragon.isPlaying) {
 				return false;
 			}
 		}
 		return true;
 	}
+
+	getCurrentPlayer() {
+        return this.players[this.currentPlayerIndex];
+    }
+
+    nextTurn() {
+        this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.players.length;
+    }
 
   	moveDragons() {
 		for (let player of this.players) {

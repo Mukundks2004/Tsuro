@@ -3,5 +3,6 @@ export class Inventory {
         this.inventorySize = inventorySize;
         this.tiles = [];
         this.selectedTileIndex = -1;
+        console.log("inventorymade");
     }
 }

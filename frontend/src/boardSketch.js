@@ -1,5 +1,3 @@
-import { Player } from './player.js';
-import { Game } from './game.js';
 import { TILESIZE, TILEPERCENT } from './utils/consts.js'
 
 let game;
@@ -7,11 +5,8 @@ let viewingPlayer;
 
 const boardSketch = (s) => {
     s.setup = () => {
-        // load game
-        game = new Game([new Player('black'), new Player('blue')]);
-
+        game = window.game;
         let boardCanvas = s.createCanvas(game.board.boardSize * TILESIZE, game.board.boardSize * TILESIZE);
-        viewingPlayer = game.players[game.currentPlayerIndex];
 
         boardCanvas.mousePressed(boardClicked);
     };
@@ -19,6 +14,7 @@ const boardSketch = (s) => {
     s.draw = () => {
         let yCoordOfTile = Math.floor(s.mouseY / TILESIZE);
         let xCoordOfTile = Math.floor(s.mouseX / TILESIZE);
+        viewingPlayer = game.getCurrentPlayer();
         
         s.background('saddlebrown');
         for (let i = 0; i < game.board.boardSize; i++) {
@@ -57,7 +53,20 @@ const boardSketch = (s) => {
     };
 
     function boardClicked() {
-        console.log('yay');
+
+        console.log('yay', game.players[game.currentPlayerIndex].inventory.selectedTileIndex);
+        let clicked_x = s.mouseX;
+        let clicked_y = s.mouseY;
+        if (game.players[game.currentPlayerIndex].inventory.selectedTileIndex !== -1) {
+            let currentInventory = game.players[game.currentPlayerIndex].inventory;
+            let selectedTile = currentInventory.tiles[game.players[game.currentPlayerIndex].inventory.selectedTileIndex];
+            console.log(selectedTile)
+
+            let xCoordTileClick = Math.floor(clicked_x / TILESIZE);
+            let yCoordTileClick = Math.floor(clicked_y / TILESIZE);
+            console.log(xCoordTileClick, yCoordTileClick);
+
+        }
     }
 }
 
