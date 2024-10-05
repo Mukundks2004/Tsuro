@@ -34,8 +34,6 @@ export class Game {
     }
 
   	moveDragons() {
-		//umm this breaks if dragons go offscreen
-		//^^ IS WRONG, IT WORKS WHEN OFFSCREEN
 
 		for (let player of this.players) {
 			let dragon = player.dragon;

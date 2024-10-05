@@ -1,4 +1,16 @@
-# TsuroMultiplayer
+# TSUROLOCAL
+
+## TODOS Oct 5 (technically 6 since it's 00:43)
+
+- happy birthday me soon, and mum
+- code is messy everywhere
+- dragons should die if they collide
+- fix modal make it look nice
+- make everything look nice in general, fonts and colours
+- allow players to choose numbers, names, colours
+- pick better var names, clean up code, add music
+
+- big steps involve add backend and remote multiplayer func
 
 ## IMPORTANT NOTE
 

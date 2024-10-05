@@ -90,11 +90,14 @@ const boardSketch = (s, onTurnChange) => {
             if (game.isGameOver()) {
                 window.gameIsOver();
             }
-            //at least one player should be able to move
-            while (!game.getCurrentPlayer().dragon.isPlaying) {
+            else {
+                //at least one player should be able to move
                 game.nextTurn();
+                while (!game.getCurrentPlayer().dragon.isPlaying) {
+                    game.nextTurn();
+                }
+                onTurnChange();
             }
-            onTurnChange();
         }
 
 
