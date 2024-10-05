@@ -12,7 +12,6 @@ const inventorySketch = (s) => {
         let currentPlayer = window.game.getCurrentPlayer();
         inventory = currentPlayer.inventory;
         s.background(0);
-        console.log(TILESPERPLAYER);
         for (let i = 0; i < TILESPERPLAYER; i++) {
             if (i === inventory.selectedTileIndex) {
                 s.fill('purple');
@@ -23,10 +22,6 @@ const inventorySketch = (s) => {
             s.noStroke();
             s.square(TILESIZE * (i + (1 - TILEPERCENT)/2), TILESIZE * (1 - TILEPERCENT)/2, TILESIZE * TILEPERCENT, 0);
             s.noFill();
-            if (inventory.tiles[i] == undefined) {
-                console.log("oop");
-                console.log(inventory.tiles);
-            }
             for (let path of inventory.tiles[i].paths) {
                 s.strokeWeight(3);
                 s.stroke('wheat');

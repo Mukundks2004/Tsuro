@@ -13,6 +13,8 @@ const boardSketch = (s, onTurnChange) => {
     };
 
     s.draw = () => {
+        game = window.game;
+
         let yCoordOfTile = Math.floor(s.mouseY / TILESIZE);
         let xCoordOfTile = Math.floor(s.mouseX / TILESIZE);
         viewingPlayer = game.getCurrentPlayer();
@@ -85,7 +87,13 @@ const boardSketch = (s, onTurnChange) => {
             coolTile.x = xCoordTileClick;
             coolTile.y = yCoordTileClick;
             game.moveDragons();
-            game.nextTurn();
+            if (game.isGameOver()) {
+                window.gameIsOver();
+            }
+            //at least one player should be able to move
+            while (!game.getCurrentPlayer().dragon.isPlaying) {
+                game.nextTurn();
+            }
             onTurnChange();
         }
 

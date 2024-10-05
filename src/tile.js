@@ -8,7 +8,6 @@ export class Tile {
     this.y = y;
     this.paths = [];
     this.initializePaths();
-    console.log("making new tile!", this.paths);
   }
 
   initializePaths() {
@@ -25,6 +24,7 @@ export class Tile {
     this.setTileArcs(this.name);
   }
 
+  //Try to generate this procedurally, add to burnside's lemma part
   getRandomTileName() {
     let options = [
       '01234567', '03612547', '04152637', '50147236', '70123456',

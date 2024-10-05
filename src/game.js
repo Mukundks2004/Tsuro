@@ -35,8 +35,13 @@ export class Game {
 
   	moveDragons() {
 		//umm this breaks if dragons go offscreen
+		//^^ IS WRONG, IT WORKS WHEN OFFSCREEN
+
 		for (let player of this.players) {
 			let dragon = player.dragon;
+			if (!dragon.isPlaying) {
+				continue;
+			}
 			let board = this.board.tiles;
 			while (board[dragon.y][dragon.x] !== 0) {      
 		

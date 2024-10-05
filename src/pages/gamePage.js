@@ -2,8 +2,11 @@ import { Game } from "../game.js";
 import { Player } from "../player.js";
 import boardSketch from "../boardSketch.js";
 
+
+//TODO: reorder this shitstorm
+
 function initGame() {
-    const players = [new Player('black', 0), new Player('blue', 1)];
+    let players = [new Player('black', 0), new Player('blue', 1), new Player('yellow', 2)];
     window.game = new Game(players);
 }
 
@@ -30,14 +33,23 @@ function closeModalFunc() {
     modal.style.display = "none";
 }
 
+const gameIsOver = () => {
+    console.log("uwu game over");
+    openModal();
+};
+
+window.gameIsOver = gameIsOver;
+
 gameOverButton.addEventListener("click", openModal);
 
 closeModal.addEventListener("click", closeModalFunc);
 
 resetButton.addEventListener("click", () => {
-    // reset game logic here
     console.log("Game reset logic goes here.");
-    closeModalFunc(); // Close the modal after resetting
+    closeModalFunc();
+    initGame();
+    
+    updateCurrentPlayerDisplay();
 });
 
 window.addEventListener("click", (event) => {
