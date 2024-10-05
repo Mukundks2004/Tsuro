@@ -9,6 +9,7 @@
 - make everything look nice in general, fonts and colours
 - allow players to choose numbers, names, colours
 - pick better var names, clean up code, add music
+- announce winner at end lol
 
 - big steps involve add backend and remote multiplayer func
 
