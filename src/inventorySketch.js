@@ -1,6 +1,3 @@
-import { Inventory } from './inventory.js';
-import { Tile } from './tile.js';
-import { Player } from './player.js';
 import { TILESIZE, TILEPERCENT, TILESPERPLAYER } from './utils/consts.js';
 
 
@@ -8,11 +5,6 @@ const inventorySketch = (s) => {
     let inventory;
     s.setup = () => {
         let inventoryCanvas = s.createCanvas(TILESPERPLAYER * TILESIZE, TILESIZE);
-        //let currentPlayer = window.game.getCurrentPlayer();
-        //inventory = currentPlayer.inventory;
-        // for (let i = 0; i < TILESPERPLAYER; i++) {
-        //     inventory.tiles.push(new Tile(i, 0));
-        // }
         inventoryCanvas.mousePressed(inventoryClicked)
     }
 
@@ -20,6 +12,7 @@ const inventorySketch = (s) => {
         let currentPlayer = window.game.getCurrentPlayer();
         inventory = currentPlayer.inventory;
         s.background(0);
+        console.log(TILESPERPLAYER);
         for (let i = 0; i < TILESPERPLAYER; i++) {
             if (i === inventory.selectedTileIndex) {
                 s.fill('purple');

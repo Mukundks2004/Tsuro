@@ -1,9 +1,10 @@
 import { TILESIZE, TILEPERCENT } from './utils/consts.js'
+import { Tile } from './tile.js';
 
 let game;
 let viewingPlayer;
 
-const boardSketch = (s) => {
+const boardSketch = (s, onTurnChange) => {
     s.setup = () => {
         game = window.game;
         let boardCanvas = s.createCanvas(game.board.boardSize * TILESIZE, game.board.boardSize * TILESIZE);
@@ -35,7 +36,6 @@ const boardSketch = (s) => {
                     s.noStroke();
                     s.square(TILESIZE * (j + (1 - TILEPERCENT)/2), TILESIZE * (i + (1 - TILEPERCENT)/2), TILESIZE * TILEPERCENT, 0);
                     s.noFill();
-                    console.log("paths: row, col: ", i, j);
                     for (let path of tile.paths) {
                         s.strokeWeight(3);
                         s.stroke(path.color);
@@ -55,25 +55,44 @@ const boardSketch = (s) => {
 
     function boardClicked() {
 
+
         let clicked_x = s.mouseX;
         let clicked_y = s.mouseY;
-        if (game.players[game.currentPlayerIndex].inventory.selectedTileIndex !== -1) {
+        let theCurrentPlayer = game.getCurrentPlayer();
+        console.log("inven before:", theCurrentPlayer.inventory);
+        if (theCurrentPlayer.inventory.selectedTileIndex !== -1) {
 
             let xCoordTileClick = Math.floor(clicked_x / TILESIZE);
             let yCoordTileClick = Math.floor(clicked_y / TILESIZE);
             console.log("x and y coords of click:",xCoordTileClick, yCoordTileClick);
 
             let coolTile = game.getCurrentPlayer().getSelectedTileOrNull();
-            coolTile.x = xCoordTileClick;
-            coolTile.y = yCoordTileClick;
+            
+
+            for (let path of coolTile.paths) {
+                path.moveBy(-1 * coolTile.x * TILESIZE, 0);
+                path.moveBy(xCoordTileClick * TILESIZE, yCoordTileClick * TILESIZE)
+            }
             console.log(coolTile);
             game.board.tiles[yCoordTileClick][xCoordTileClick] = coolTile;
 
+            theCurrentPlayer.inventory.tiles[coolTile.x] = new Tile(coolTile.x, 0);
+            theCurrentPlayer.inventory.selectedTileIndex = -1;
+
             console.log(game.board.tiles);
+
+            // i think this is not needed. The only time this is ever needed is when setting the paths initially and then recalibrating them. it makes sense to try to keep them consistent
+            // so you should try to maintain them.
+            coolTile.x = xCoordTileClick;
+            coolTile.y = yCoordTileClick;
         }
 
         game.moveDragons();
+        game.nextTurn();
+        onTurnChange();
+
     }
 }
 
-new p5(boardSketch, 'boardContainer');
+export default boardSketch;
+//new p5(boardSketch, 'boardContainer');

@@ -7,7 +7,6 @@ export class Player {
     constructor(color, number) {
         this.color = color;
         this.number = number;
-        console.log("generating tiles for player: ",number);
         this.inventory = new Inventory(TILESPERPLAYER);
         for (let i = 0; i < TILESPERPLAYER; i++) {
             this.inventory.tiles.push(new Tile(i, 0));
