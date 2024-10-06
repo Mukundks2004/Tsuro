@@ -34,7 +34,7 @@ These laws and the nature of groups being used to model anything that can be con
 
 One last important thing to note before we conclude with our definition of groups is the idea of an "orbit". An orbit refers to the set of elements in a given set $X$ that can be reached from a particular element by the action of the elements of a group $G$. Or formally, $Orb(x) = \\{g \cdot x \ | \ g \in G\\}$.
 
-Consider the $8$ possible bit strings of length 3. If we "tie the ends" or in other words allow rotational invariance, we reduce the number of "necklaces" to 4: $000$, $001$, $011$ and $111$. The bit strings $010$ and $100$ are equivalent to $001$ and the bit strings $110$, $101$ are equivalent to $011$. This equivalence splits the bit strings into $4$ orbits $X = \\{000\} \cup \\{001, 010, 100\\} \cup \\{011, 101, 110\\} \cup \\{111\\}$. We'll come back to what we can do with this shortly.
+Consider the $8$ possible bit strings of length 3. If we "tie the ends" or in other words allow rotational invariance, we reduce the number of "necklaces" to 4: $000$, $001$, $011$ and $111$. The bit strings $010$ and $100$ are equivalent to $001$ and the bit strings $110$, $101$ are equivalent to $011$. This equivalence splits the bit strings into $4$ orbits $X = \\{000\\} \cup \\{001, 010, 100\\} \cup \\{011, 101, 110\\} \cup \\{111\\}$. We'll come back to what we can do with this shortly.
 
 ## Burnside's Lemma
 Burnside's Lemma is a tool that helps count the number of distinct objects under group actions, particularly in combinatorial contexts. It states that the number of distinct orbits of a set $X$ acted upon by a finite group $G$ can be calculated using the following formula. The number of distinct configurations of $X$ under $G$ is given by:
