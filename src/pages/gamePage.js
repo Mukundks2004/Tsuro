@@ -1,13 +1,19 @@
 import { Game } from "../game.js";
 import { Player } from "../player.js";
 import boardSketch from "../boardSketch.js";
-
+import inventorySketch from "../inventorySketch.js";
 
 //TODO: reorder this shitstorm
 
-function initGame() {
-    let players = [new Player('black', 0, "fred"), new Player('blue', 1, "george"), new Player('yellow', 2, "harry"), new Player('orange', 3, "velma")];
-    window.game = new Game(players);
+//Ohh this is so poorly ordered
+
+function initGame(playersData) {
+    console.log(playersData);
+    const playersObjects = playersData.map((data, index) => {
+        return new Player(data.color, index, data.name);
+    });
+    //let players = [new Player('black', 0, "fred"), new Player('blue', 1, "george"), new Player('yellow', 2, "harry"), new Player('orange', 3, "velma")];
+    window.game = new Game(playersObjects);
 }
 
 const rotateCurrentPlayer = () => {
@@ -48,7 +54,7 @@ closeModal.addEventListener("click", closeModalFunc);
 resetButton.addEventListener("click", () => {
     console.log("Game reset logic goes here.");
     closeModalFunc();
-    initGame();
+    initGame(JSON.parse(localStorage.getItem('playersData')));
     
     updateCurrentPlayerDisplay();
 });
@@ -59,8 +65,19 @@ window.addEventListener("click", (event) => {
     }
 });
 
-initGame()
-document.getElementById("rotateButton").addEventListener("click", rotateCurrentPlayer);
-updateCurrentPlayerDisplay();
+window.onload = function() {
+    const playersData = JSON.parse(localStorage.getItem('playersData'));
 
-new p5((s) => boardSketch(s, updateCurrentPlayerDisplay), 'boardContainer');
+    if (playersData) {
+        console.log('Players Data:', playersData);
+        console.log("creating game");
+        initGame(playersData);
+        document.getElementById("rotateButton").addEventListener("click", rotateCurrentPlayer);
+        updateCurrentPlayerDisplay();
+    
+        new p5((s) => boardSketch(s, updateCurrentPlayerDisplay), 'boardContainer');
+        new p5((s) => inventorySketch(s), 'inventoryContainer');
+    }
+
+};
+

@@ -9,14 +9,26 @@ playerCountSelect.addEventListener('change', function () {
 });
 
 startButton.addEventListener('click', function () {
-    const playerNameInputs = document.querySelectorAll('#playerTable select');
-    const selectedPlayerNames = Array.from(playerNameInputs).map(input => input.value);
-    const queryParams = new URLSearchParams();
-    selectedPlayerNames.forEach((color, index) => {
-        queryParams.append(`player${index + 1}`, color);
+    const playerRows = document.querySelectorAll('#playerTable tr:not(:first-child)');
+    const players = [];
+
+    playerRows.forEach((row, index) => {
+        const colorSelect = row.querySelector('td:nth-child(2) select');
+        const nameInput = row.querySelector('td:nth-child(3) input');
+
+        const color = colorSelect.value;
+        const name = nameInput.value.trim() || nameInput.placeholder;
+
+        players.push({
+            player: `player${index + 1}`,
+            color: color,
+            name: name
+        });
     });
-    const queryString = queryParams.toString();
-    window.location.href = `public/gamepage.html?${queryString}`;
+
+    localStorage.setItem('playersData', JSON.stringify(players));
+
+    window.location.href = 'public/gamepage.html';
 });
 
 function generatePlayerTable(playerCount) {
@@ -27,6 +39,7 @@ function generatePlayerTable(playerCount) {
         <tr>
             <th>Player</th>
             <th>Color</th>
+            <th>Name</th>
         </tr>
     `;
 
@@ -45,17 +58,10 @@ function generatePlayerTable(playerCount) {
                     <option value="yellow">Yellow</option>
                 </select>
             </td>
+            <td><input type="text" placeholder=CoolGuy${i}></td>
         `;
         table.appendChild(row);
     }
 
     playerTableDiv.appendChild(table);
 }
-
-// function gotoGame() {
-//     window.location.href = "public/gamepage.html";
-// }
-
-// const messageElement = document.getElementById('messagePlace');
-
-// document.getElementById("gotoGamePage").addEventListener("click", gotoGame);

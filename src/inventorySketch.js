@@ -41,7 +41,8 @@ const inventorySketch = (s) => {
     }
 }
 
-new p5(inventorySketch, 'inventoryContainer');
+export default inventorySketch;
+//new p5(inventorySketch, 'inventoryContainer');
 
 
 // What happens when we click the board, for example
