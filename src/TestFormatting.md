@@ -1,4 +1,4 @@
-A group $G$ is a set $S$ and a binary operation $$\cdot : S \times S \rightarrow S$$ such that
+<!-- A group $G$ is a set $S$ and a binary operation $$\cdot : S \times S \rightarrow S$$ such that
 
 - **Closure**: $\quad \forall a, b \in G, \quad ab \in G$
 
@@ -21,4 +21,4 @@ The values for $|X^{r_n}|$ come from the number of elements unchanged by $r_n$ b
 
 So what does this have to do with Tsuro tiles? Well in our case our set is simply the $105$ distinct (for now) Tsuro tiles, and our set can be [presented](https://mathworld.wolfram.com/GroupPresentation.html) as $\langle r | r^4 = 1 \rangle$. This is the $C_4$ group! Think about it for a second- rotating a square is fundamentally the same action as cycling beads in a necklace one to the right. $C_4$ has four elements in it- so how many elements in $X$ are fixed by each $g \in C_4$?
 
-By the lemma, $|X / G| = \frac{1}{4} (105 + 5 + 25 + 5) = 35$ -->
+By the lemma, $|X / G| = \frac{1}{4} (105 + 5 + 25 + 5) = 35$ --> -->

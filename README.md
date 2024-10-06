@@ -29,7 +29,6 @@ A group $G$ is a set $S$ and a binary operation &nbsp; $\cdot : S \times S \righ
 - **Identity**: $\quad \exists e \in G \quad \text{s.t.} \quad \forall a \in G, \quad ae = ea = a$
 
 - **Inverse**: $\quad \forall a \in G \quad \exists b \in G \quad \text{s.t.} \quad ab = ba = e$
-$\forall a, b \in G \exists c$
 
 These laws and the nature of groups being used to model anything that can be conceptualized as certain symmetry will help us explore the properties of the rotational invariance of our $105$ Tsuro tiles analytically.
 
