@@ -2,11 +2,11 @@ A group $G$ is a set $S$ and a binary operation $$\cdot : S \times S \rightarrow
 
 - **Closure**: $\quad \forall a, b \in G, \quad ab \in G$
 
-- **Associativity**: $\quad \forall a, b, c \in G, \quad a(bc) = (ab)c$
+$\quad \forall a, b, c \in G, \quad a(bc) = (ab)c$
 
-- **Identity**: $$\quad \exists e \in G \quad \text{s.t.} \quad \forall a \in G, \quad ae = ea = a$$
+$$\quad \exists e \in G \quad \text{s.t.} \quad \forall a \in G, \quad ae = ea = a$$
 
-- **Inverse**: $$\quad \forall a \in G \quad \exists b \in G \quad \text{s.t.} \quad ab = ba = e$$
+$$\quad \forall a \in G \quad \exists b \in G \quad \text{s.t.} \quad ab = ba = e$$
 <!-- $\forall a, b \in G \exists c$ -->
 
 
