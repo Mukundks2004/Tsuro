@@ -8,7 +8,7 @@ A Tsuro tile (in it's simplest form) looks like this:
 
  ![tsuro tile](./TsuroTile.png)
 
- It is a square tile with $2$ nodes equally spaced on each of its four sides. Every node needs to be connected to one and only one other node, so there will only ever be four "paths" on a simple Tsuro tile. WLOG you start with $8$ free points, and you can choose any out of the $7$ available to form your first path. Out of the $6$ remaining, you can again choose one arbitrarily and you have $5$ path options. Thus, the total number of tiles you can create is $7 \times 5 \times 3 = 105$. However, this calculation overlooks a critical complication- in Tsuro, players can rotate tiles at will (but not reflect them), thus making the following two tiles identical.
+ It is a square tile with $2$ nodes equally spaced on each of its four sides. Every node needs to be connected to one and only one other node, so there will only ever be four "paths" on a simple Tsuro tile. WLOG start with $8$ free points, and choose any out of the remaining $7$ to form the first path. Of the $6$ remaining, you can again choose one arbitrarily and have $5$ path options. Thus, the total number of tiles you can create is $7 \times 5 \times 3 = 105$. However, this calculation overlooks a critical complication- in Tsuro, players can rotate tiles at will (but not reflect them), thus making the following two tiles identical.
 
  ![first tile](./TsuroTile.png) &emsp; ![second tile](./TsuroTileRotated.png)
 
