@@ -4,9 +4,9 @@ A group $G$ is a set $S$ and a binary operation $$\cdot : S \times S \rightarrow
 
 - **Associativity**: $\quad \forall a, b, c \in G, \quad a(bc) = (ab)c$
 
-- **Identity**: $\quad \exists e \in G \quad \text{s.t.} \quad \forall a \in G, \quad ae = ea = a$
+- **Identity**: $$\quad \exists e \in G \quad \text{s.t.} \quad \forall a \in G, \quad ae = ea = a$$
 
-- **Inverse**: $\quad \forall a \in G \quad \exists b \in G \quad \text{s.t.} \quad ab = ba = e$
+- **Inverse**: $$\quad \forall a \in G \quad \exists b \in G \quad \text{s.t.} \quad ab = ba = e$$
 <!-- $\forall a, b \in G \exists c$ -->
 
 
