@@ -41,7 +41,7 @@ Burnside's Lemma is a tool that helps count the number of distinct objects under
 
 $|X/G| = \frac{1}{G} \sum_{g \in G} |X ^ g|$
 
-where $|X ^ g|$ is the number of elements in $X$ that are fixed by $g$ (elements that remain unchanged when g is applied). We'll now apply the lemma to our bit necklace example. In this case, our set $X$ is the set of all 3 bit strings, and our group is [$C_3$](https://mathworld.wolfram.com/CyclicGroupC3.html) which contains the three rotations you can perform on a set of $3$ ordered objects, where the group operator is composition of rotations. Let the elements of $G$ be $r_0$ (the identity rotation), $r_1$ (a single element shift to the right) and $r_2$ (a two element shift to the right). You can verify the group axioms hold for $C_3$ on your own :) 
+where $|X ^ g|$ is the number of elements in $X$ that are fixed by $g$ (elements that remain unchanged when g is applied). We'll now apply the lemma to our bit necklace example. In this case, our set $X$ is the set of all 3 bit strings, and our group is [the Cyclic group of order 3](https://mathworld.wolfram.com/CyclicGroupC3.html) which contains the three rotations you can perform on a set of $3$ ordered objects, where the group operator is composition of rotations. Let the elements of $G$ be $r_0$ (the identity rotation), $r_1$ (a single element shift to the right) and $r_2$ (a two element shift to the right). You can verify the group axioms hold for $C_3$ on your own :) 
 
 $|X / G| = \frac{1}{|G|}(|X^{r_0}| + |X^{r_1}| + |X^{r_2}|) = \frac{1}{3}(8 + 2 + 2) = 4$
 
