@@ -8,7 +8,7 @@ A Tsuro tile (in it's simplest form) looks like this:
 
  ![tsuro tile](./TsuroTile.png)
 
- It is a square tile with $2$ nodes equally spaced on each of its four sides. Every node needs to be one and only one other node, so there will only ever be four "paths" on a simple Tsuro tile. WLOG you start with $8$ free points, and you can choose any out of the $7$ available to form your first path. Out of the $6$ remaining, you can again choose one arbitrarily and you have $5$ path options. Thus, the total number of tiles you can create is $7 \times 5 \times 3 = 105$. However, this calculation overlooks a critical complication- in Tsuro, players can rotate tiles at will (but not reflect them), thus making the following two tiles identical.
+ It is a square tile with $2$ nodes equally spaced on each of its four sides. Every node needs to be connected to one and only one other node, so there will only ever be four "paths" on a simple Tsuro tile. WLOG start with $8$ free points, and choose any out of the remaining $7$ to form the first path. Of the $6$ remaining, you can again choose one arbitrarily and have $5$ path options. Thus, the total number of tiles you can create is $7 \times 5 \times 3 = 105$. However, this calculation overlooks a critical complication- in Tsuro, players can rotate tiles at will (but not reflect them), thus making the following two tiles identical.
 
  ![first tile](./TsuroTile.png) &emsp; ![second tile](./TsuroTileRotated.png)
 
@@ -49,7 +49,7 @@ The values for $|X^{r_n}|$ come from the number of elements unchanged by $r_n$ b
 
 ## A More Complex Example
 
-So what does this have to do with Tsuro tiles? Well in our case our set is simply the $105$ distinct (for now) Tsuro tiles, and our set can be [presented](https://mathworld.wolfram.com/GroupPresentation.html) as $\langle r | r^4 = 1 \rangle$. This is the $C_4$ group! Think about it for a second- rotating a square is fundamentally the same action as cycling beads in a necklace one to the right. $C_4$ has four elements in it- so how many elements in $X$ are fixed by each $g \in C_4$?
+So what does this have to do with Tsuro tiles? Well in our case our set is simply the $105$ distinct (for now) Tsuro tiles, and our group can be [presented](https://mathworld.wolfram.com/GroupPresentation.html) as $\langle r | r^4 = 1 \rangle$. This is the $C_4$ group! Think about it for a second- rotating a square is fundamentally the same action as cycling beads in a necklace one to the right. $C_4$ has four elements in it- so how many elements in $X$ are fixed by each $g \in C_4$?
 
 - Case $1$: all $105$ elements are fixed
 - Case $r$: the number of rotationally symmetric tiles- each path needs to be identical to the other $3$, so we need to be able to produce a single path we can replicate 3 more times (one for each rotation) to get a symmetric tile. WLOG select any node. Now there are 7 other nodes usable to form a path. Of these, exactly $2$ nodes (the nodes $2$ nodes in front and behind) are unusable to form a tile with quadruple symmetry. This is because if you were to create a path which would fully overlap another path on rotation, it's placement would require a single node to have $2$ connections. So there are $5$ remaining choices, each of which when replicated yields a symmetric tile.
