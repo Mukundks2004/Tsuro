@@ -94,13 +94,20 @@ const boardSketch = (s, onTurnChange) => {
             //rename cool tile to something better
             coolTile.x = xCoordTileClick;
             coolTile.y = yCoordTileClick;
-            game.moveDragons();
-            for (let playert of game.players) {
-                console.log(playert.dragon.coords.x, playert.dragon.coords.y, playert.dragon.isPlaying);
+            let survivingPlayers = [];
+            for (let potentiallyAlivePlayer of game.players) {
+                if (potentiallyAlivePlayer.dragon.isPlaying) {
+                    survivingPlayers.push(potentiallyAlivePlayer.color);
+                }
             }
+            game.moveDragons();
             if (game.isGameOver()) {
                 //Not sure if i need this or not... it does a final draw before the gameover modal, to draw crosses etc.
                 //s.draw();
+
+
+                //We need to set the winning player, but how do we know who this is? maybe calculate it? but by this point we know everyone is dead hmm...
+                window.winningPlayerName = survivingPlayers.join(", ");
                 window.gameIsOver();
             }
             else {

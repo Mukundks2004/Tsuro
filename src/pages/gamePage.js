@@ -21,12 +21,14 @@ function updateCurrentPlayerDisplay() {
 }
 
 const modal = document.getElementById("modal");
+const winnerMessage = document.getElementById("winnerMessage");
 const closeModal = document.getElementById("closeModal");
 const resetButton = document.getElementById("resetButton");
 const gameOverButton = document.getElementById("gameOverButton");
 
-function openModal() {
+function openModal(winnerName) {
     modal.style.display = "block";
+    winnerMessage.innerText = "The winner of the game is: " + winnerName + "!";
 }
 
 function closeModalFunc() {
@@ -34,13 +36,12 @@ function closeModalFunc() {
 }
 
 const gameIsOver = () => {
-    console.log("uwu game over");
-    openModal();
+    openModal(window.winningPlayerName);
 };
 
 window.gameIsOver = gameIsOver;
 
-gameOverButton.addEventListener("click", openModal);
+gameOverButton.addEventListener("click", function() {openModal("random test")});
 
 closeModal.addEventListener("click", closeModalFunc);
 

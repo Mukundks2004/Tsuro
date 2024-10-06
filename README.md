@@ -16,6 +16,9 @@
 - dragons collide mid paths
 - dragons dead drawn with an 'x'
 - fix spawn logic so you can spawn anywhere (including 2 on the same side), but not on the same tiles, so they cant both occupy a corner piece which surprisingly happens a lot... is the spawn logic broken rn?
+- add point system, keep track of points
+- status table with who is playing and how many points they have
+- form where you can select how many players and their colours, maybe make it so multiple people cant have the same colours
 
 ## IMPORTANT NOTE
 

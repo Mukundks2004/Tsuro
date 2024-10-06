@@ -40,7 +40,9 @@ export class Game {
 			if (!dragon.isPlaying) {
 				continue;
 			}
+			
 			let board = this.board.tiles;
+			let dragonCollisionDetectedStopMoving = false;
 			while (board[dragon.y][dragon.x] !== 0) {      
 		
 				let currentName = board[dragon.y][dragon.x].name;
@@ -50,12 +52,33 @@ export class Game {
 					if (parseInt(currentName[i]) === dragon.vertex) {
 						otherVertex = parseInt(currentName[i + 1]);
 						board[dragon.y][dragon.x].paths[i/2].color = dragon.color;
+						break;
 					}
 					else if (parseInt(currentName[i + 1]) === dragon.vertex) {
 						otherVertex = parseInt(currentName[i]);
 						board[dragon.y][dragon.x].paths[i/2].color = dragon.color;
+						break;
 					}
 					i++;
+				}
+
+				//Test if dragon exists at target vertex on same tile
+				for (let otherPlayer of this.players) {
+					if (otherPlayer !== player) {
+						if (otherPlayer.dragon.vertex == otherVertex && dragon.x === otherPlayer.dragon.x && dragon.y === otherPlayer.dragon.y) {
+							//This successfully detects a collision between two dragons. Now, what happens when two dragons collide?
+							//Well stop moving both of them (leave this loop for one of them) and set both their statuses to NOT PLAYING :)
+							//love ya
+							console.log("collision between two dragons: ", dragon, otherPlayer.dragon);
+							dragon.isPlaying = false;
+							otherPlayer.dragon.isPlaying = false;
+							dragonCollisionDetectedStopMoving = true;
+						}
+					}
+				}
+
+				if (dragonCollisionDetectedStopMoving) {
+					break;
 				}
 
 				let newVertexOtherTile = moduloStrict(otherVertex + (otherVertex % 2 === 0 ? 5 : 3), 8);
@@ -76,6 +99,7 @@ export class Game {
 
 				dragon.vertex = newVertexOtherTile;
 				dragon.calculatePixelCoords();
+
 				if (dragon.isOffBoard()) {
 					dragon.isPlaying = false;
 					break;
