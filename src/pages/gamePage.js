@@ -12,7 +12,6 @@ function initGame(playersData) {
     const playersObjects = playersData.map((data, index) => {
         return new Player(data.color, index, data.name);
     });
-    //let players = [new Player('black', 0, "fred"), new Player('blue', 1, "george"), new Player('yellow', 2, "harry"), new Player('orange', 3, "velma")];
     window.game = new Game(playersObjects);
 }
 
@@ -30,7 +29,7 @@ const modal = document.getElementById("modal");
 const winnerMessage = document.getElementById("winnerMessage");
 const closeModal = document.getElementById("closeModal");
 const resetButton = document.getElementById("resetButton");
-const gameOverButton = document.getElementById("gameOverButton");
+// const gameOverButton = document.getElementById("gameOverButton");
 
 function openModal(winnerName) {
     modal.style.display = "block";
@@ -47,7 +46,7 @@ const gameIsOver = () => {
 
 window.gameIsOver = gameIsOver;
 
-gameOverButton.addEventListener("click", function() {openModal("random test")});
+// gameOverButton.addEventListener("click", function() {openModal("random test")});
 
 closeModal.addEventListener("click", closeModalFunc);
 
@@ -72,7 +71,7 @@ window.onload = function() {
         console.log('Players Data:', playersData);
         console.log("creating game");
         initGame(playersData);
-        document.getElementById("rotateButton").addEventListener("click", rotateCurrentPlayer);
+        // document.getElementById("rotateButton").addEventListener("click", rotateCurrentPlayer);
         updateCurrentPlayerDisplay();
     
         new p5((s) => boardSketch(s, updateCurrentPlayerDisplay), 'boardContainer');
