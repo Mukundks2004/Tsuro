@@ -51,8 +51,16 @@ const boardSketch = (s, onTurnChange) => {
         for (let player of game.players) {
             let dragon = player.dragon;
             s.fill(dragon.color);
-            s.ellipse(dragon.coords.x, dragon.coords.y, dragon.radius);
+            if (dragon.isPlaying) {
+                s.ellipse(dragon.coords.x, dragon.coords.y, dragon.radius);
+            }
+            // else {
+            //     let crossSize = dragon.radius * 6
+            //     s.rect(dragon.coords.x - crossSize / 2, dragon.coords.y - crossSize / 6, crossSize, crossSize / 3); 
+            //     s.rect(dragon.coords.x - crossSize / 6, dragon.coords.y - crossSize / 2, crossSize / 3, crossSize);
+            // }
         }
+
     };
 
     function boardClicked() {
@@ -87,7 +95,12 @@ const boardSketch = (s, onTurnChange) => {
             coolTile.x = xCoordTileClick;
             coolTile.y = yCoordTileClick;
             game.moveDragons();
+            for (let playert of game.players) {
+                console.log(playert.dragon.coords.x, playert.dragon.coords.y, playert.dragon.isPlaying);
+            }
             if (game.isGameOver()) {
+                //Not sure if i need this or not... it does a final draw before the gameover modal, to draw crosses etc.
+                //s.draw();
                 window.gameIsOver();
             }
             else {

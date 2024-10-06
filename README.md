@@ -12,6 +12,10 @@
 - announce winner at end lol
 
 - big steps involve add backend and remote multiplayer func
+- animating moving dragons
+- dragons collide mid paths
+- dragons dead drawn with an 'x'
+- fix spawn logic so you can spawn anywhere (including 2 on the same side), but not on the same tiles, so they cant both occupy a corner piece which surprisingly happens a lot... is the spawn logic broken rn?
 
 ## IMPORTANT NOTE
 
