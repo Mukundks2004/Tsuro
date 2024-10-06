@@ -1,4 +1,4 @@
-A group $G$ is a set $S$ and a binary operation &nbsp; $\cdot : S \times S \rightarrow S$ &nbsp; such that
+A group $G$ is a set $S$ and a binary operation $$\cdot : S \times S \rightarrow S$$ such that
 
 - **Closure**: $\quad \forall a, b \in G, \quad ab \in G$
 
