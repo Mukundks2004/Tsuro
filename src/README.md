@@ -10,7 +10,7 @@ A group $G$ is a set $S$ and a binary operation $$\cdot : S \times S \rightarrow
 <!-- $\forall a, b \in G \exists c$ -->
 
 
-<!-- $|X/G| = \frac{1}{G} \sum_{g \in G} |X ^ g|$ -->
+$$|X/G| = \frac{1}{G} \sum_{g \in G} |X ^ g|$$
 
 
 <!-- $|X / G| = \frac{1}{|G|}(|X^{r_0}| + |X^{r_1}| + |X^{r_2}|) = \frac{1}{3}(8 + 2 + 2) = 4$
