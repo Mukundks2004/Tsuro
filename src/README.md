@@ -1,4 +1,4 @@
-<!-- A group $G$ is a set $S$ and a binary operation &nbsp; $\cdot : S \times S \rightarrow S$ &nbsp; such that
+A group $G$ is a set $S$ and a binary operation &nbsp; $\cdot : S \times S \rightarrow S$ &nbsp; such that
 
 - **Closure**: $\quad \forall a, b \in G, \quad ab \in G$
 
@@ -7,10 +7,10 @@
 - **Identity**: $\quad \exists e \in G \quad \text{s.t.} \quad \forall a \in G, \quad ae = ea = a$
 
 - **Inverse**: $\quad \forall a \in G \quad \exists b \in G \quad \text{s.t.} \quad ab = ba = e$
-$\forall a, b \in G \exists c$ -->
+<!-- $\forall a, b \in G \exists c$ -->
 
 
-$|X/G| = \frac{1}{G} \sum_{g \in G} |X ^ g|$
+<!-- $|X/G| = \frac{1}{G} \sum_{g \in G} |X ^ g|$ -->
 
 
 <!-- $|X / G| = \frac{1}{|G|}(|X^{r_0}| + |X^{r_1}| + |X^{r_2}|) = \frac{1}{3}(8 + 2 + 2) = 4$
