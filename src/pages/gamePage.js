@@ -6,7 +6,7 @@ import boardSketch from "../boardSketch.js";
 //TODO: reorder this shitstorm
 
 function initGame() {
-    let players = [new Player('black', 0), new Player('blue', 1), new Player('yellow', 2)];
+    let players = [new Player('black', 0, "fred"), new Player('blue', 1, "george"), new Player('yellow', 2, "harry"), new Player('orange', 3, "velma")];
     window.game = new Game(players);
 }
 
@@ -17,7 +17,7 @@ const rotateCurrentPlayer = () => {
 
 function updateCurrentPlayerDisplay() {
     const currentPlayer = window.game.getCurrentPlayer();
-    document.getElementById('currentPlayerDisplay').innerText = `Current Player: ${currentPlayer.color} ${currentPlayer.number}`;
+    document.getElementById('currentPlayerDisplay').innerText = `Current Player Number: ${currentPlayer.number}, Name: ${currentPlayer.playerName}`;
 }
 
 const modal = document.getElementById("modal");

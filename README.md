@@ -19,6 +19,7 @@
 - add point system, keep track of points
 - status table with who is playing and how many points they have
 - form where you can select how many players and their colours, maybe make it so multiple people cant have the same colours
+- make everything strongly typed
 
 ## IMPORTANT NOTE
 

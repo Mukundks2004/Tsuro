@@ -97,7 +97,7 @@ const boardSketch = (s, onTurnChange) => {
             let survivingPlayers = [];
             for (let potentiallyAlivePlayer of game.players) {
                 if (potentiallyAlivePlayer.dragon.isPlaying) {
-                    survivingPlayers.push(potentiallyAlivePlayer.color);
+                    survivingPlayers.push(potentiallyAlivePlayer.playerName);
                 }
             }
             game.moveDragons();

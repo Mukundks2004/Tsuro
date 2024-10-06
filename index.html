@@ -11,7 +11,17 @@
     <body>
         <h1>Welcome to Tsuro!</h1>
 
-        <button id="gotoGamePage">Click me</button>
+        <label for="playerCount">How many are playing?</label>
+        <br>
+        <select id="playerCount">
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+
+        <div id="playerTable"></div>
+
+        <button id="gotoGamePage">Let's go</button>
         
         <script src="src/pages/index.js"></script>
     </body>

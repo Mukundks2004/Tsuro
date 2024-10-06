@@ -4,7 +4,8 @@ import { Tile } from './tile.js';
 import { Inventory } from './inventory.js';
 
 export class Player {
-    constructor(color, number) {
+    constructor(color, number, playerName) {
+        this.playerName = playerName;
         this.color = color;
         this.number = number;
         this.inventory = new Inventory(TILESPERPLAYER);
