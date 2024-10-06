@@ -21,6 +21,8 @@
 - form where you can select how many players and their colours, maybe make it so multiple people cant have the same colours
 - make everything strongly typed
 
+- maybe don't let other people pcik the same colour you have picked, or the same name? do form validaiton? idk
+
 ## IMPORTANT NOTE
 
 - WANT TO CHANGE THIS TO BE HOSTED SO THAT MULTIPLE PEOPLE CAN PLAY AT ONCE
