@@ -101,6 +101,7 @@ const boardSketch = (s, onTurnChange) => {
                 }
             }
             game.moveDragons();
+            window.updateScores();
             if (game.isGameOver()) {
                 //Not sure if i need this or not... it does a final draw before the gameover modal, to draw crosses etc.
                 //s.draw();

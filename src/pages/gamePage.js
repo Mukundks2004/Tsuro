@@ -6,18 +6,54 @@ import inventorySketch from "../inventorySketch.js";
 //TODO: reorder this shitstorm
 
 //Ohh this is so poorly ordered
+const playerScoreTable = document.getElementById('playerScoreTable');
+
 
 function initGame(playersData) {
-    console.log(playersData);
+    //console.log(playersData);
     const playersObjects = playersData.map((data, index) => {
         return new Player(data.color, index, data.name);
     });
     window.game = new Game(playersObjects);
+    window.allPlayerData = window.game.players;
+    generateScoreTable();
 }
 
 const rotateCurrentPlayer = () => {
     window.game.nextTurn();
     updateCurrentPlayerDisplay();
+}
+
+function generateScoreTable() {
+    let playerData = window.allPlayerData;
+    console.log("data:");
+    console.log(playerData);
+    playerScoreTable.innerHTML = '';
+
+    const table = document.createElement('table');
+    table.innerHTML = `
+        <tr>
+            <th>Player</th>
+            <th>Name</th>
+            <th>Colour</th>
+            <th>Score</th>
+            <th>Is Alive?</th>
+        </tr>
+    `;
+
+    for (let i = 0; i < playerData.length; i++) {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${i + 1}</td>
+            <td>${playerData[i].playerName}</td>
+            <td>${playerData[i].color}</td>
+            <td>${playerData[i].dragon.pathsTravelled}</td>
+            <td>${playerData[i].dragon.isPlaying}</td>
+        `;
+        table.appendChild(row);
+    }
+
+    playerScoreTable.appendChild(table);
 }
 
 function updateCurrentPlayerDisplay() {
@@ -45,6 +81,7 @@ const gameIsOver = () => {
 };
 
 window.gameIsOver = gameIsOver;
+window.updateScores = generateScoreTable;
 
 // gameOverButton.addEventListener("click", function() {openModal("random test")});
 

@@ -1,8 +1,6 @@
 import { TILESIZE, TILEPERCENT, BOARDSIZE } from './utils/consts.js';
 import { Point } from './point.js';
 
-//This class currently only supports one dragon at a time
-
 export class Dragon {
 	constructor(color, num) {
 		this.Id = num; //TODO: change once we have some kind of global player count
@@ -12,6 +10,7 @@ export class Dragon {
 		this.setRandomStartingPos();
 		this.calculatePixelCoords();
 		this.isPlaying = true;
+		this.pathsTravelled = 0;
 	}
 
 	calculatePixelCoords() {

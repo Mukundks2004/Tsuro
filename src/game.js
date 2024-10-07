@@ -52,11 +52,13 @@ export class Game {
 					if (parseInt(currentName[i]) === dragon.vertex) {
 						otherVertex = parseInt(currentName[i + 1]);
 						board[dragon.y][dragon.x].paths[i/2].color = dragon.color;
+						dragon.pathsTravelled++;
 						break;
 					}
 					else if (parseInt(currentName[i + 1]) === dragon.vertex) {
 						otherVertex = parseInt(currentName[i]);
 						board[dragon.y][dragon.x].paths[i/2].color = dragon.color;
+						dragon.pathsTravelled++;
 						break;
 					}
 					i++;
