@@ -35,7 +35,9 @@ export class Game {
 
   	moveDragons() {
 
-		for (let player of this.players) {
+		for (let i = this.currentPlayerIndex; i < this.players.length + this.currentPlayerIndex; i++) {
+			let player = this.players[i % this.players.length];
+			//for (let player of this.players) {
 			let dragon = player.dragon;
 			if (!dragon.isPlaying) {
 				continue;
