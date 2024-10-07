@@ -7,7 +7,7 @@ export class Dragon {
 	constructor(color, num) {
 		this.Id = num; //TODO: change once we have some kind of global player count
 		this.color = color;
-		this.radius = 3; //TODO: make bigger
+		this.radius = 12; //TODO: make bigger
 		this.boardSize = BOARDSIZE; // Used for random location generation
 		this.setRandomStartingPos();
 		this.calculatePixelCoords();

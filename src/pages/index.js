@@ -49,25 +49,23 @@ function generatePlayerTable(playerCount) {
             <td>Player ${i}</td>
             <td>
                 <select>
-                    <option value="aqua">Aqua</option>
-                    <option value="darkred">Dark red</option>
-                    <option value="lime">Lime</option>
-                    <option value="deeppink">Pink</option>
+                    <option value="blue">Blue</option>
+                    <option value="orange">Orange</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="coral">Coral</option>
+                    <option value="red">Red</option>
+                    <option value="black">Black</option>
+                    <option value="chartreuse">Chartreuse</option>
                     <option value="lightgrey">Grey</option>
                     <option value="purple">Purple</option>
-                    <option value="yellow">Yellow</option>
-                    <option value="orange">Orange</option>
-                    <option value="red">Red</option>
-                    <option value="blue">Blue</option>
-                    <option value="green">Green</option>
-                    <option value="coral">Coral</option>
-                    <option value="chartreuse">Chartreuse</option>
                     <option value="indigo">Indigo</option>
                     <option value="crimson">Crimson</option>
-                    <option value="khaki">Khaki</option>
-                    <option value="lightpink">LightPink</option>
                     <option value="seagreen">SeaGreen</option>
+                    <option value="green">Green</option>
                     <option value="teal">Teal</option>
+                    <option value="lime">Lime</option>
+                    <option value="aqua">Aqua</option>
+                    <option value="deeppink">Pink</option>
                 </select>
             </td>
             <td><input type="text" placeholder=CoolGuy${i}></td>

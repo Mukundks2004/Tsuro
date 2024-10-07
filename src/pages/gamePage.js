@@ -22,7 +22,7 @@ const rotateCurrentPlayer = () => {
 
 function updateCurrentPlayerDisplay() {
     const currentPlayer = window.game.getCurrentPlayer();
-    document.getElementById('currentPlayerDisplay').innerText = `Current Player Number: ${currentPlayer.number + 1}, Name: ${currentPlayer.playerName}`;
+    document.getElementById('currentPlayerDisplay').innerText = `It is currently Player ${currentPlayer.number + 1}: ${currentPlayer.playerName}'s turn!`;
 }
 
 const modal = document.getElementById("modal");
