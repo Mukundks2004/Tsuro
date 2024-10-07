@@ -37,18 +37,18 @@ export class Dragon {
 		switch (this.Id) {
 		case 0:
 			this.y = 0
-			this.x = Math.floor(6 * seed);
+			this.x = Math.floor(BOARDSIZE * seed);
 			break;
 		case 1:
-			this.y = Math.floor(6 * Math.random());
+			this.y = Math.floor(BOARDSIZE * Math.random());
 			this.x = this.boardSize - 1;
 			break;
 		case 2:
 			this.y = this.boardSize - 1;
-			this.x = Math.floor(6 * Math.random());
+			this.x = Math.floor(BOARDSIZE * Math.random());
 			break;
 		case 3:
-			this.y = Math.floor(6 * Math.random());
+			this.y = Math.floor(BOARDSIZE * Math.random());
 			this.x = 0;
 			break;
 		}
