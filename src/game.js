@@ -35,7 +35,9 @@ export class Game {
 
   	moveDragons() {
 
-		for (let player of this.players) {
+		for (let i = this.currentPlayerIndex; i < this.players.length + this.currentPlayerIndex; i++) {
+			let player = this.players[i % this.players.length];
+			//for (let player of this.players) {
 			let dragon = player.dragon;
 			if (!dragon.isPlaying) {
 				continue;
@@ -52,11 +54,13 @@ export class Game {
 					if (parseInt(currentName[i]) === dragon.vertex) {
 						otherVertex = parseInt(currentName[i + 1]);
 						board[dragon.y][dragon.x].paths[i/2].color = dragon.color;
+						dragon.pathsTravelled++;
 						break;
 					}
 					else if (parseInt(currentName[i + 1]) === dragon.vertex) {
 						otherVertex = parseInt(currentName[i]);
 						board[dragon.y][dragon.x].paths[i/2].color = dragon.color;
+						dragon.pathsTravelled++;
 						break;
 					}
 					i++;
