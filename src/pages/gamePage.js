@@ -11,20 +11,16 @@ const highestScoreMessage = document.getElementById('highestScoreMessage');
 const submitScoreButton = document.getElementById('submitScoreButton');
 
 
-highestScoreMessage.innerText = "Do you want to submit your score to the global leaderboard?";
+// highestScoreMessage.innerText = "Do you want to submit your score to the global leaderboard?";
 submitScoreButton.addEventListener("click", async () => {
-
     console.log("submitting score user and score: ", window.LongPlayer, window.TopScore);
     submitScoreButton.hidden = true;
     highestScoreMessage.hidden = true;
     let data = (await getHighScore())['highscores'];
-    console.log(data);
     let newEntry = {username: window.LongPlayer, score: window.TopScore, datetime: getFormattedDate()};
-    console.log(newEntry);
     data.push(newEntry);
     data.sort((a, b) => b.score - a.score);
-    console.log(data);
-    updateHighScore(data);
+    updateHighScore(data.slice(0, 5));
 });
 
 function getFormattedDate() {
@@ -102,7 +98,7 @@ function openModal(winnerName) {
     window.TopScore = highestScore.dragon.pathsTravelled;
 
     //Change to 70+ (so there can only be 1) and make that a const
-    if (parseInt(window.TopScore) > 15) {
+    if (parseInt(window.TopScore) > 65) {
         highestScoreMessage.hidden = false;
         submitScoreButton.hidden = false;
         highestScoreMessage.innerText = `Do you want to submit your (${highestScore.playerName}) score (${highestScore.dragon.pathsTravelled}) to the global leaderboard?`;
