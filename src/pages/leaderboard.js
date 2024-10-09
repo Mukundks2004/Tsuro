@@ -7,7 +7,7 @@ homeButton.addEventListener('click', function () {
 });
 
 async function getHighScore() {
-    const url = 'https://api.jsonbin.io/v3/b/6706693dad19ca34f8b57cdb'
+    const url = 'https://api.jsonbin.io/v3/b/6706693dad19ca34f8b57cdb';
     const apiKey = '$2a$10$b1XI2jMm5zWidjYmu7hpXeuUNfglKuktZCzWGIzNnSXY1xPZInmh.';
     const response = await fetch(url, {
         method: 'GET',
@@ -18,23 +18,6 @@ async function getHighScore() {
       });
     const data = await response.json();
     return data.record;
-}
-
-async function updateHighScore(newScore) {
-    const url = 'https://api.jsonbin.io/v3/b/6706693dad19ca34f8b57cdb'
-    const apiKey = '$2a$10$b1XI2jMm5zWidjYmu7hpXeuUNfglKuktZCzWGIzNnSXY1xPZInmh.';    
-    const response = await fetch(url, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Master-Key': apiKey
-      },
-      body: JSON.stringify({
-        highscores: newScore
-      })
-    });
-    
-    return response.json();
 }
 
 function generatePlayerTable(dataObject) {
@@ -65,18 +48,6 @@ function generatePlayerTable(dataObject) {
   
 
 printDeetsButton.addEventListener('click', async function () {
-
     let data = await getHighScore();
-    console.log("real data");
-    console.log(data);
-    let dataObject = [
-        {username: "Mks", score: "9", datetime: "01-01-2000"},
-        {username: "Andrew", score: "6", datetime: "01-01-2000"},
-        {username: "Jacob", score: "4", datetime: "01-02-2000"},
-        {username: "Phillip", score: "2", datetime: "01-01-2000"},
-        {username: "Sally", score: "1", datetime: "01-01-2000"}
-    ];
     generatePlayerTable(data['highscores']);
-    //updateHighScore(dataObject);
-    console.log("done");
 })
