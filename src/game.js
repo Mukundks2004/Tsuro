@@ -34,10 +34,8 @@ export class Game {
     }
 
   	moveDragons() {
-
 		for (let i = this.currentPlayerIndex; i < this.players.length + this.currentPlayerIndex; i++) {
 			let player = this.players[i % this.players.length];
-			//for (let player of this.players) {
 			let dragon = player.dragon;
 			if (!dragon.isPlaying) {
 				continue;
@@ -73,7 +71,6 @@ export class Game {
 							//This successfully detects a collision between two dragons. Now, what happens when two dragons collide?
 							//Well stop moving both of them (leave this loop for one of them) and set both their statuses to NOT PLAYING :)
 							//love ya
-							console.log("collision between two dragons: ", dragon, otherPlayer.dragon);
 							dragon.isPlaying = false;
 							otherPlayer.dragon.isPlaying = false;
 							dragonCollisionDetectedStopMoving = true;
