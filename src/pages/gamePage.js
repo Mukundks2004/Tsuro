@@ -12,11 +12,11 @@ const playerScoreTable = document.getElementById('playerScoreTable');
 const highestScoreMessage = document.getElementById('highestScoreMessage');
 const submitScoreButton = document.getElementById('submitScoreButton');
 
+const gohomeButton = document.getElementById('gohomeButton');
+
 const _0x4ea0d4=_0x32e9;function _0x32e9(_0x1245bb,_0x4f60e9){const _0x5676c0=_0x5676();return _0x32e9=function(_0x32e924,_0x3c1d77){_0x32e924=_0x32e924-0x169;let _0x1b7981=_0x5676c0[_0x32e924];return _0x1b7981;},_0x32e9(_0x1245bb,_0x4f60e9);}function _0x5676(){const _0x15498d=['178830pvzheu','../src/config.json','116649WsgiWo','4362468FjeeZB','36flxglN','15xzBFIP','then','245066rpyuIg','12SiZyXC','json','2623523yQFbzB','206020zHKASD','176Sjmwbj','322873JHbgcY','44XlQBBg'];_0x5676=function(){return _0x15498d;};return _0x5676();}(function(_0xdec164,_0x2202a4){const _0xac5ef7=_0x32e9,_0x34b2d0=_0xdec164();while(!![]){try{const _0x2e68b1=parseInt(_0xac5ef7(0x16f))/0x1+-parseInt(_0xac5ef7(0x169))/0x2*(-parseInt(_0xac5ef7(0x176))/0x3)+parseInt(_0xac5ef7(0x175))/0x4*(parseInt(_0xac5ef7(0x16d))/0x5)+parseInt(_0xac5ef7(0x16a))/0x6*(-parseInt(_0xac5ef7(0x16c))/0x7)+-parseInt(_0xac5ef7(0x16e))/0x8*(parseInt(_0xac5ef7(0x173))/0x9)+parseInt(_0xac5ef7(0x171))/0xa*(-parseInt(_0xac5ef7(0x170))/0xb)+parseInt(_0xac5ef7(0x174))/0xc;if(_0x2e68b1===_0x2202a4)break;else _0x34b2d0['push'](_0x34b2d0['shift']());}catch(_0x236090){_0x34b2d0['push'](_0x34b2d0['shift']());}}}(_0x5676,0x899cd),fetch(_0x4ea0d4(0x172))[_0x4ea0d4(0x177)](_0x51e463=>_0x51e463[_0x4ea0d4(0x16b)]())[_0x4ea0d4(0x177)](_0x43eae4=>{const _0x39d014=_0x43eae4['secondStuff'];bob=atob(someStuff)+atob(_0x39d014);}));
 
-// highestScoreMessage.innerText = "Do you want to submit your score to the global leaderboard?";
 submitScoreButton.addEventListener("click", async () => {
-    console.log("submitting score user and score: ", window.LongPlayer, window.TopScore);
     submitScoreButton.hidden = true;
     highestScoreMessage.hidden = true;
     let data = (await getHighScore())['highscores'];
@@ -24,6 +24,10 @@ submitScoreButton.addEventListener("click", async () => {
     data.push(newEntry);
     data.sort((a, b) => b.score - a.score);
     updateHighScore(data.slice(0, 5));
+});
+
+gohomeButton.addEventListener('click', function () {
+    window.location.href = '/index.html';
 });
 
 function getFormattedDate() {
@@ -101,7 +105,7 @@ function openModal(winnerName) {
     window.TopScore = highestScore.dragon.pathsTravelled;
 
     //Change to 70+ (so there can only be 1) and make that a const
-    if (parseInt(window.TopScore) >= 5) {
+    if (parseInt(window.TopScore) >= 65) {
         highestScoreMessage.hidden = false;
         submitScoreButton.hidden = false;
         highestScoreMessage.innerText = `Do you want to submit your (${highestScore.playerName}) score (${highestScore.dragon.pathsTravelled}) to the global leaderboard?`;
