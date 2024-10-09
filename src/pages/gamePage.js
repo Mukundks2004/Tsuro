@@ -2,6 +2,7 @@ import { Game } from "../game.js";
 import { Player } from "../player.js";
 import boardSketch from "../boardSketch.js";
 import inventorySketch from "../inventorySketch.js";
+import { someStuff, huhCode } from "../config.js";
 
 //TODO: reorder this shitstorm
 
@@ -10,6 +11,12 @@ const playerScoreTable = document.getElementById('playerScoreTable');
 const highestScoreMessage = document.getElementById('highestScoreMessage');
 const submitScoreButton = document.getElementById('submitScoreButton');
 
+fetch('../src/config.json')
+.then(response => response.json())
+.then(data => {
+    const bits = data.secondStuff;
+    bob = atob(someStuff) + atob(bits);
+  })
 
 // highestScoreMessage.innerText = "Do you want to submit your score to the global leaderboard?";
 submitScoreButton.addEventListener("click", async () => {
@@ -107,12 +114,11 @@ function openModal(winnerName) {
 
 async function getHighScore() {
     const url = 'https://api.jsonbin.io/v3/b/6706693dad19ca34f8b57cdb'
-    const apiKey = '$2a$10$b1XI2jMm5zWidjYmu7hpXeuUNfglKuktZCzWGIzNnSXY1xPZInmh.';
     const response = await fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'X-Master-Key': apiKey
+          'X-Master-Key': bob
         }
       });
     const data = await response.json();
@@ -121,12 +127,11 @@ async function getHighScore() {
 
 async function updateHighScore(newScore) {
     const url = 'https://api.jsonbin.io/v3/b/6706693dad19ca34f8b57cdb'
-    const apiKey = '$2a$10$b1XI2jMm5zWidjYmu7hpXeuUNfglKuktZCzWGIzNnSXY1xPZInmh.';    
     const response = await fetch(url, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'X-Master-Key': apiKey
+        'X-Master-Key': bob
       },
       body: JSON.stringify({
         highscores: newScore

@@ -1,6 +1,16 @@
+import { someStuff, huhCode } from "../config.js";
+
 const homeButton = document.getElementById('goHomeButton');
 const printDeetsButton = document.getElementById('printDeetsButton');
 const playerHighscoresTable = document.getElementById('playerHighscoresTable');
+let bob = "hi";
+
+fetch('../src/config.json')
+.then(response => response.json())
+.then(data => {
+    const bits = data.secondStuff;
+    bob = atob(someStuff) + atob(bits);
+  })
 
 homeButton.addEventListener('click', function () {
     window.location.href = '/';
@@ -8,12 +18,11 @@ homeButton.addEventListener('click', function () {
 
 async function getHighScore() {
     const url = 'https://api.jsonbin.io/v3/b/6706693dad19ca34f8b57cdb';
-    const apiKey = '$2a$10$b1XI2jMm5zWidjYmu7hpXeuUNfglKuktZCzWGIzNnSXY1xPZInmh.';
     const response = await fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'X-Master-Key': apiKey
+          'X-Master-Key': bob
         }
       });
     const data = await response.json();
