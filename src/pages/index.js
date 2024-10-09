@@ -75,3 +75,9 @@ function generatePlayerTable(playerCount) {
 
     playerTableDiv.appendChild(table);
 }
+
+const gotoLeaderboard = document.getElementById('gotoLeaderboard');
+
+gotoLeaderboard.addEventListener('click', function () {
+    window.location.href = 'public/leaderboard.html';
+});
