@@ -27,7 +27,7 @@ submitScoreButton.addEventListener("click", async () => {
 });
 
 gohomeButton.addEventListener('click', function () {
-    window.location.href = '/index.html';
+    window.location.href = '/Tsuro';
 });
 
 function getFormattedDate() {
